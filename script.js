@@ -19,4 +19,3 @@ var frames = {
     console.log(frame);
   }
 };
-console.log("hgello");
