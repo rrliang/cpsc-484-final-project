@@ -1,4 +1,6 @@
-var host = "cpsc484-01.yale.internal:8888";
+// python3 -m http.server 4444
+
+var host = "cpsc484-01.stdusr.yale.internal:8888";
 
 $(document).ready(function() {
   frames.start();
@@ -19,3 +21,4 @@ var frames = {
     console.log(frame);
   }
 };
+console.log("hello");
