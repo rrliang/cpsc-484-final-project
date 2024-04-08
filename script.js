@@ -18,8 +18,8 @@ var frames = {
         console.log('hand')
         var d = document.getElementById('cursor');
         d.style.position = "absolute";
-        d.style.left = command[0]/2+'px';
-        d.style.top = command[1]/2+'px';
+        d.style.left = command[0]+'px';
+        d.style.top = command[1]*-1+'px';
       }
       // frames.show(JSON.parse(event.data));
     };
