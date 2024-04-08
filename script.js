@@ -39,7 +39,7 @@ var frames = {
       }
     };
   },
-
+  
   show: function(frame) {
     if (frame.people.length < 1) {
       return null;
