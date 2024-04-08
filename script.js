@@ -6,59 +6,70 @@ $(document).ready(function() {
   frames.start();
 });
 
+
 var frames = {
   socket: null,
 
   start: function() {
     var url = "ws://" + host + "/frames";
     frames.socket = new WebSocket(url);
+
+    frames.socket.onopen = function() {
+      console.log("WebSocket connection established");
+    };
+
+    frames.socket.onclose = function(event) {
+      console.log("WebSocket connection closed: " + event.reason);
+    };
+
+    frames.socket.onerror = function(error) {
+      console.error("WebSocket error: " + error.message);
+    };
+
     frames.socket.onmessage = function(event) {
       var command = frames.show(JSON.parse(event.data));
       if (command !== null) {
-        console.log('hand')
         var d = document.getElementById('cursor');
         d.style.position = "absolute";
-        d.style.left = command[0]+'px';
-        d.style.top = command[1]*-1+'px';
+        d.style.left = command[0] + 'px';
+        d.style.top = command[1] + 'px';
+        d.style.visibility = "visible";
+      } else {
+        document.getElementById('cursor').style.visibility = "hidden";
       }
-      // frames.show(JSON.parse(event.data));
     };
   },
 
   show: function(frame) {
-    // console.log(frame);
-    // console.log('Frame.people!');\
-    var command = null;
     if (frame.people.length < 1) {
-      return command;
+      return null;
     }
 
-    // Normalize by subtracting the root (pelvis) joint coordinates
-    // var pelvis_x = frame.people[0].joints[0].position.x;
-    // var pelvis_y = frame.people[0].joints[0].position.y;
-    // var pelvis_z = frame.people[0].joints[0].position.z;
-    var right_hand_x = (frame.people[0].joints[15].position.x) * -1;
-    var right_hand_y = (frame.people[0].joints[15].position.y) * -1;
-    var right_hand_z = (frame.people[0].joints[15].position.z) * -1;
+    // Adjust these offset values to position the cursor correctly on your screen
+    var offsetX = 200;
+    var offsetY = 200;
+    var correctionFactorX = 25;
+    var correctionFactorY = 35;
 
+    var screenWidth = window.innerWidth;
+    var screenHeight = window.innerHeight;
+
+    var right_hand_x = (frame.people[0].joints[15].position.x * -2) + offsetX;
+    var right_hand_y = frame.people[0].joints[15].position.y + offsetY;
+
+    // Constrain the cursor to stay within the screen bounds
+    right_hand_x = Math.max(0, Math.min(right_hand_x, screenWidth - correctionFactorX));
+    right_hand_y = Math.max(0, Math.min(right_hand_y, screenHeight - correctionFactorY));
+
+    // Smoothing
+    var smoothingFactor = 0.5; // Adjust this value between 0 (no smoothing) and 1 (full smoothing)
+    if (this.previousPosition) {
+        right_hand_x = smoothingFactor * right_hand_x + (1 - smoothingFactor) * this.previousPosition[0];
+        right_hand_y = smoothingFactor * right_hand_y + (1 - smoothingFactor) * this.previousPosition[1];
+    }
+    this.previousPosition = [right_hand_x, right_hand_y];
     
-
-    // if (right_hand_x < 200 && right_hand_x > -200) {
-    //   if (right_hand_y > 500) {
-    //     command = 73; // UP
-    //   } else if (right_hand_y < 100) {
-    //     command = 75; // DOWN
-    //   }
-    // } else if (right_hand_y < 500 && right_hand_y > 100) {
-    //   if (right_hand_x > 200) {
-    //     command = 76; // RIGHT
-    //   } else if (right_hand_x < -200) {
-    //     command = 74; // LEFT
-    //   }
-    // }
-    command = [right_hand_x, right_hand_y, right_hand_z]
-    return command;
-
+    return [right_hand_x, right_hand_y];
   }
 };
 console.log("hello");
