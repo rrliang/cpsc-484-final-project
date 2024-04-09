@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Preferences - Study Space Finder</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <button class="help-button">?</button>
+    
+    <div class="preferences-container">
+        <h2>Select an option based on your preference.</h2>
+        <p>Toggle defaults to the middle, where the option does not matter in the filter.</p>
+
+        <div class="options-group">
+            <span>Indoor</span>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <span>Outdoor</span>
+        </div>
+
+        <div class="options-group">
+            <span>Quiet</span>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <span>Background Noise</span>
+        </div>
+
+        <div class="options-group">
+            <span>&lt; 10 min walk</span>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <span>&gt; 10 min walk</span>
+        </div>
+
+        <div class="options-group">
+            <span>STEM</span>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <span>Humanities</span>
+        </div>
+    </div>
+
+    <button class="start-over">Start Over</button>
+    <button class="search">Search</button>
+    <script src="script.js"></script>
+</body>
+</html>
