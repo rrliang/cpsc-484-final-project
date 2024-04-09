@@ -1,5 +1,6 @@
 // python3 -m http.server 4444
 
+// Host given by tutorial page, we are display 1
 var host = "cpsc484-01.stdusr.yale.internal:8888";
 
 $(document).ready(function() {
@@ -7,6 +8,10 @@ $(document).ready(function() {
 });
 
 var elements = [];
+
+// Add all interactable elements of specific window
+// (and their counters) to the elements array
+
 if (window.location.pathname.includes('/index.html')) {
   var startButton = document.getElementById('start-button');
   startButton.addEventListener('click', startButtonClick);
@@ -14,7 +19,6 @@ if (window.location.pathname.includes('/index.html')) {
 }
 
 if (window.location.pathname.includes('/preferences.html')) {
-  console.log('got here!')
   var startOverButton = document.getElementById('start-over-button');
   var searchButton = document.getElementById('search-button');
   var helpButton = document.getElementById('help-button');
@@ -24,6 +28,10 @@ if (window.location.pathname.includes('/preferences.html')) {
   elements.push({element:startOverButton, counter:0});
   elements.push({element:searchButton, counter:0});
   elements.push({element:helpButton, counter:0});
+}
+
+if (window.location.pathname.includes('/loading.html')) {
+  setTimeout(() => {window.location = "./studyspace.html"}, 2000);
 }
 
 function startButtonClick() {
@@ -43,11 +51,13 @@ function helpButtonClick() {
 }
 
 
+// This function will return the top, bottom, left, right x, y positions of given element
 function getElementPosition(el) {
   var rect = el.getBoundingClientRect();
   return rect;
 }
 
+// This function will return true if the given elements overlap
 function isOverlap(rect1, rect2) {
   var isOverlap = false;
   if (
@@ -58,7 +68,6 @@ function isOverlap(rect1, rect2) {
 
     isOverlap = true;
   }
-  
   return isOverlap;
 }
 
@@ -92,9 +101,14 @@ var frames = {
         cursor.style.left = command[0] + 'px';
         cursor.style.top = command[1] + 'px';
         cursor.style.visibility = "visible";
-        cursor.style.zIndex = '9999'; //ensure cursor is always ontop
+        cursor.style.zIndex = '9999'; // ensure cursor is always ontop
 
         var cursorRect = getElementPosition(cursor);
+        // Loop through all interactable elements in the page
+        // Check to see if the cursor is interacting with element
+        // If the cursor is ontop of element, start adding to counter
+        // Once counter reaches 3 seconds (counter > 12) < todo experiment with this
+        // Interact with the object, by clicking it
         elements.forEach( pair => {
           var rect1 = getElementPosition(pair.element);
           if (!isOverlap(rect1, cursorRect)) {
