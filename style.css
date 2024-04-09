@@ -63,6 +63,15 @@ h1, h2 {
     border: 2px solid #00356B;
 }
 
+.hovering {
+    position:relative;
+    z-index: 4000;
+    background-color: #00356B;
+    color: #FFFFFF;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
 .action-button:hover, .start-over:hover, .search:hover, .start:hover {
     background-color: #00356B;
     color: #FFFFFF;

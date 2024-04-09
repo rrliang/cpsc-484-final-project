@@ -6,7 +6,7 @@ $(document).ready(function() {
   frames.start();
 });
 
-var startButton = document.getElementById('cursor');
+var startButton = document.getElementById('start-button');
 
 var handle = null;
 
@@ -24,13 +24,34 @@ function out() {
   
 // }
 
-
+//DOESN"T work
 function moveActualMouse(command) {
   var sel = window.getSelection();
   sel.removeAllRanges();
   sel.addRange(document.caretPositionFromPoint(command[0], command[1]));
+  console.log('moved cursor to ' + command[0] + ", " + command[1])
 }
 
+function getElementPosition(el) {
+  var rect = el.getBoundingClientRect();
+  return rect;
+}
+
+function isOverlap(rect1, rect2) {
+  var isOverlap = false;
+  if (
+    rect2.top < rect1.top || 
+    rect2.right > rect1.right ||
+    rect2.bottom > rect1.bottom || 
+    rect2.left < rect1.left) {
+
+    isOverlap = true;
+  }
+  
+  return isOverlap;
+}
+
+var counter = 0
 var frames = {
   socket: null,
 
@@ -53,13 +74,28 @@ var frames = {
     frames.socket.onmessage = function(event) {
       var command = frames.show(JSON.parse(event.data));
       if (command !== null) {
-        var d = document.getElementById('cursor');
-        d.style.position = "absolute";
-        d.style.left = command[0] + 'px';
-        d.style.top = command[1] + 'px';
-        d.style.visibility = "visible";
-        moveActualMouse(command);
-        
+        var cursor = document.getElementById('cursor');
+        cursor.style.position = "absolute";
+        cursor.style.left = command[0] + 'px';
+        cursor.style.top = command[1] + 'px';
+        cursor.style.visibility = "visible";
+        cursor.style.zIndex = '9999';
+        // moveActualMouse(command);
+        var rect1 = getElementPosition(startButton);
+        var rect2 = getElementPosition(cursor);
+        if (!isOverlap(rect1, rect2)) {
+          startButton.classList.add('hovering');
+          cursor.src ="img/mouse-over-cursor.png";
+          counter += 1;
+        } else {
+          startButton.classList.remove('hovering');
+          cursor.src ="img/regular-cursor.png";
+          counter = 0;
+        }
+        if (counter > 12) {
+          alert('3 sec');
+          counter = 0;
+        }
       } else {
         document.getElementById('cursor').style.visibility = "hidden";
       }
