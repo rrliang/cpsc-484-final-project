@@ -6,6 +6,30 @@ $(document).ready(function() {
   frames.start();
 });
 
+var startButton = document.getElementById('cursor');
+
+var handle = null;
+
+function enter () {
+  handle = setTimeout(
+    function() {
+      alert('Hovered for 3s')
+  }, 3000);
+}
+
+function out() {
+  clearTimeout(handle);
+}
+// hoverTimer: function(el) {
+  
+// }
+
+
+function moveActualMouse(command) {
+  var sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(document.caretPositionFromPoint(command[0], command[1]));
+}
 
 var frames = {
   socket: null,
@@ -34,6 +58,8 @@ var frames = {
         d.style.left = command[0] + 'px';
         d.style.top = command[1] + 'px';
         d.style.visibility = "visible";
+        moveActualMouse(command);
+        
       } else {
         document.getElementById('cursor').style.visibility = "hidden";
       }
@@ -72,4 +98,3 @@ var frames = {
     return [right_hand_x, right_hand_y];
   }
 };
-console.log("hello");

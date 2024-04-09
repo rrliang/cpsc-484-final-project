@@ -48,7 +48,7 @@ h1, h2 {
 }
 
 /* Buttons and Action Items */
-.action-button, .start-over, .search, .option {
+.action-button, .start-over, .search, .option, .start {
     padding: 15px 30px;
     cursor: pointer;
     font-size: 1.2em;
@@ -57,13 +57,13 @@ h1, h2 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.action-button, .start-over, .search {
+.action-button, .start-over, .search, .start{
     background-color: #FFFFFF;
     color: #00356B;
     border: 2px solid #00356B;
 }
 
-.action-button:hover, .start-over:hover, .search:hover {
+.action-button:hover, .start-over:hover, .search:hover, .start:hover {
     background-color: #00356B;
     color: #FFFFFF;
     transform: scale(1.05);

@@ -8,16 +8,17 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <img src="img/regular-cursor.png" height="32" id="cursor">
+    <img src="img/regular-cursor.png" height="32" id="cursor" alt="Regular pointer cursor">
     <div class="welcome-container">
         <h1>Are you looking for a new study space?</h1>
         <p class="instruction">Raise Your Arm to Continue!</p>
         <div class="instructions">
             <p>The cursor is linked to your right hand.</p>
-            <p>All items with the <span class="yale-blue">Yale Blue</span> color are interactable.</p>
+            <p>All items outlined with the <span class="yale-blue">Yale Blue</span> color are interactable.</p>
             <p>If you hover the cursor for three seconds over the Yale Blue objects, you can select them.</p>
         </div>
     </div>
+    <button onmouseenter="enter()" onmouseout="out()" class="start" id="start-button">Start</button>
     <script src="script.js"></script>
 </body>
 </html>
