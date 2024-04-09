@@ -6,31 +6,42 @@ $(document).ready(function() {
   frames.start();
 });
 
-var startButton = document.getElementById('start-button');
-
-var handle = null;
-
-function enter () {
-  handle = setTimeout(
-    function() {
-      alert('Hovered for 3s')
-  }, 3000);
+var elements = [];
+if (window.location.pathname.includes('/index.html')) {
+  var startButton = document.getElementById('start-button');
+  startButton.addEventListener('click', startButtonClick);
+  elements.push({element:startButton, counter:0});
 }
 
-function out() {
-  clearTimeout(handle);
+if (window.location.pathname.includes('/preferences.html')) {
+  console.log('got here!')
+  var startOverButton = document.getElementById('start-over-button');
+  var searchButton = document.getElementById('search-button');
+  var helpButton = document.getElementById('help-button');
+  startOverButton.addEventListener('click', startOverButtonClick);
+  searchButton.addEventListener('click', searchButtonClick);
+  helpButton.addEventListener('click', helpButtonClick);
+  elements.push({element:startOverButton, counter:0});
+  elements.push({element:searchButton, counter:0});
+  elements.push({element:helpButton, counter:0});
 }
-// hoverTimer: function(el) {
-  
-// }
 
-//DOESN"T work
-function moveActualMouse(command) {
-  var sel = window.getSelection();
-  sel.removeAllRanges();
-  sel.addRange(document.caretPositionFromPoint(command[0], command[1]));
-  console.log('moved cursor to ' + command[0] + ", " + command[1])
+function startButtonClick() {
+  window.location = "./preferences.html";
 }
+
+function startOverButtonClick() {
+  window.location = "./index.html";
+}
+
+function searchButtonClick() {
+  window.location = "./loading.html";
+}
+
+function helpButtonClick() {
+  console.log('TODO: HELP PAGE')
+}
+
 
 function getElementPosition(el) {
   var rect = el.getBoundingClientRect();
@@ -51,6 +62,8 @@ function isOverlap(rect1, rect2) {
   return isOverlap;
 }
 
+
+var handle = null;
 var counter = 0
 var frames = {
   socket: null,
@@ -79,23 +92,27 @@ var frames = {
         cursor.style.left = command[0] + 'px';
         cursor.style.top = command[1] + 'px';
         cursor.style.visibility = "visible";
-        cursor.style.zIndex = '9999';
-        // moveActualMouse(command);
-        var rect1 = getElementPosition(startButton);
-        var rect2 = getElementPosition(cursor);
-        if (!isOverlap(rect1, rect2)) {
-          startButton.classList.add('hovering');
-          cursor.src ="img/mouse-over-cursor.png";
-          counter += 1;
-        } else {
-          startButton.classList.remove('hovering');
-          cursor.src ="img/regular-cursor.png";
-          counter = 0;
-        }
-        if (counter > 12) {
-          alert('3 sec');
-          counter = 0;
-        }
+        cursor.style.zIndex = '9999'; //ensure cursor is always ontop
+
+        var cursorRect = getElementPosition(cursor);
+        elements.forEach( pair => {
+          var rect1 = getElementPosition(pair.element);
+          if (!isOverlap(rect1, cursorRect)) {
+            pair.element.classList.add('hovering');
+            cursor.src ="img/mouse-over-cursor.png";
+            pair.counter += 1;
+          } else {
+            pair.element.classList.remove('hovering');
+            cursor.src ="img/regular-cursor.png";
+            pair.counter = 0;
+          }
+          if (pair.counter > 12) {
+            // alert('3 sec');
+            pair.element.click();
+            pair.counter = 0;
+          }
+        });
+        
       } else {
         document.getElementById('cursor').style.visibility = "hidden";
       }
