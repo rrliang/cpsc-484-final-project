@@ -77,6 +77,9 @@ var counter = 0
 var frames = {
   socket: null,
 
+  previousPositions: [],
+  maxPositions: 4,
+
   start: function() {
     var url = "ws://" + host + "/frames";
     frames.socket = new WebSocket(url);
@@ -154,14 +157,18 @@ var frames = {
     right_hand_x = Math.max(0, Math.min(right_hand_x, screenWidth - correctionFactorX));
     right_hand_y = Math.max(0, Math.min(right_hand_y, screenHeight - correctionFactorY));
 
-    // Smoothing
-    var smoothingFactor = 0.5; // Adjust this value between 0 (no smoothing) and 1 (full smoothing)
-    if (this.previousPosition) {
-        right_hand_x = smoothingFactor * right_hand_x + (1 - smoothingFactor) * this.previousPosition[0];
-        right_hand_y = smoothingFactor * right_hand_y + (1 - smoothingFactor) * this.previousPosition[1];
-    }
-    this.previousPosition = [right_hand_x, right_hand_y];
-    
-    return [right_hand_x, right_hand_y];
+    // Add the current position to the beginning of the previousPositions array
+    this.previousPositions.unshift([right_hand_x, right_hand_y]);
+    // Trim the array to the maximum number of positions
+    this.previousPositions = this.previousPositions.slice(0, this.maxPositions);
+
+    // Calculate the average position
+    var averagePosition = this.previousPositions.reduce(function(acc, pos) {
+      return [acc[0] + pos[0], acc[1] + pos[1]];
+    }, [0, 0]).map(function(sum) {
+      return sum / frames.previousPositions.length;
+    });
+
+    return averagePosition;
   }
 };
