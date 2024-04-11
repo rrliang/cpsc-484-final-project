@@ -49,7 +49,7 @@ h1, h2 {
 
 /* Buttons and Action Items */
 .action-button, .start-over, .search, .option, .start {
-    padding: 15px 30px;
+    padding: 30px 45px;
     cursor: pointer;
     font-size: 1.2em;
     border-radius: 5px;
@@ -68,7 +68,15 @@ h1, h2 {
     color: #FFFFFF;
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: background-position 3s linear, color 3s ease; /* Apply transition to background-position on hover */
+    transition: background-position 2s linear, color 2s ease; /* Apply transition to background-position on hover */
+}
+
+.hovering {
+    background-position: left bottom;
+    color: #FFFFFF;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-position 2s linear, color 2s ease;
 }
 
 .help-button {

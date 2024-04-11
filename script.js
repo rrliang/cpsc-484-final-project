@@ -60,6 +60,7 @@ function getElementPosition(el) {
 // This function will return true if the given elements overlap
 function isOverlap(rect1, rect2) {
   var isOverlap = false;
+
   if (
     rect2.top < rect1.top || 
     rect2.right > rect1.right ||
@@ -101,8 +102,8 @@ var frames = {
       if (command !== null) {
         var cursor = document.getElementById('cursor');
         cursor.style.position = "absolute";
-        cursor.style.left = command[0] + 'px';
-        cursor.style.top = command[1] + 'px';
+        cursor.style.left = (command[0] - 5) + 'px';
+        cursor.style.top = (command[1] - 5) + 'px';
         cursor.style.visibility = "visible";
         cursor.style.zIndex = '9999'; // ensure cursor is always ontop
 
@@ -110,7 +111,7 @@ var frames = {
         // Loop through all interactable elements in the page
         // Check to see if the cursor is interacting with element
         // If the cursor is ontop of element, start adding to counter
-        // Once counter reaches 3 seconds (counter > 12) < todo experiment with this
+        // Once counter reaches 2 seconds (counter > 16)
         // Interact with the object, by clicking it
         elements.forEach( pair => {
           var rect1 = getElementPosition(pair.element);
@@ -123,8 +124,8 @@ var frames = {
             cursor.src ="img/regular-cursor.png";
             pair.counter = 0;
           }
-          if (pair.counter > 12) {
-            // alert('3 sec');
+          if (pair.counter > 16) {
+            // alert('2 sec');
             pair.element.click();
             pair.counter = 0;
           }
