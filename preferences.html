@@ -16,39 +16,55 @@
         <p>Toggle defaults to the middle, where the option does not matter in the filter.</p>
 
         <div class="options-group">
-            <span>Indoor</span>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
-            <span>Outdoor</span>
+            <div class="tri-state-switch">
+                <input type="radio" id="indoor-option" name="location" value="indoor"/>
+                <label for="indoor-option" class="left-option">Indoor</label>
+                
+                <input type="radio" id="no-preference-location" name="location" value="no-preference" checked/>
+                <label for="no-preference-location" class="middle-option">No Preference</label>
+                
+                <input type="radio" id="outdoor-option" name="location" value="outdoor"/>
+                <label for="outdoor-option" class="right-option">Outdoor</label>
+            </div>
         </div>
 
         <div class="options-group">
-            <span>Quiet</span>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
-            <span>Background Noise</span>
+            <div class="tri-state-switch">
+                <input type="radio" id="quiet-option" name="noise" value="quiet"/>
+                <label for="quiet-option" class="left-option">Quiet</label>
+                
+                <input type="radio" id="no-preference-noise" name="noise" value="no-preference" checked/>
+                <label for="no-preference-noise" class="middle-option">No Preference</label>
+                
+                <input type="radio" id="noise-option" name="noise" value="noise"/>
+                <label for="noise-option" class="right-option">Background Noise</label>
+            </div>
         </div>
 
         <div class="options-group">
-            <span>&lt; 10 min walk</span>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
-            <span>&gt; 10 min walk</span>
+            <div class="tri-state-switch">
+                <input type="radio" id="short-walk-option" name="walk" value="short"/>
+                <label for="short-walk-option" class="left-option">&lt; 10 min walk</label>
+                
+                <input type="radio" id="no-preference-walk" name="walk" value="no-preference" checked/>
+                <label for="no-preference-walk" class="middle-option">No Preference</label>
+                
+                <input type="radio" id="long-walk-option" name="walk" value="long"/>
+                <label for="long-walk-option" class="right-option">&gt; 10 min walk</label>
+            </div>
         </div>
 
         <div class="options-group">
-            <span>STEM</span>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
-            <span>Humanities</span>
+            <div class="tri-state-switch">
+                <input type="radio" id="stem-option" name="major" value="stem"/>
+                <label for="stem-option" class="left-option">STEM</label>
+                
+                <input type="radio" id="no-preference-major" name="major" value="no-preference" checked/>
+                <label for="no-preference-major" class="middle-option">No Preference</label>
+                
+                <input type="radio" id="humanities-option" name="major" value="humanities"/>
+                <label for="humanities-option" class="right-option">Humanities</label>
+            </div>
         </div>
     </div>
 

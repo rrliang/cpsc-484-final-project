@@ -34,6 +34,15 @@ if (window.location.pathname.includes('/loading.html')) {
   setTimeout(() => {window.location = "./studyspace.html"}, 2000);
 }
 
+if (window.location.pathname.includes('/recommendation.html')) {
+  var startOverButton = document.getElementById('start-over-button');
+  var helpButton = document.getElementById('help-button');
+  startOverButton.addEventListener('click', startOverButtonClick);
+  helpButton.addEventListener('click', helpButtonClick);
+  elements.push({element:startOverButton, counter:0});
+  elements.push({element:helpButton, counter:0});
+}
+
 function startButtonClick() {
   window.location = "./preferences.html";
 }
@@ -47,7 +56,8 @@ function searchButtonClick() {
 }
 
 function helpButtonClick() {
-  console.log('TODO: HELP PAGE')
+  window.location.href = "./help.html";
+  // console.log('TODO: HELP PAGE')
 }
 
 

@@ -92,7 +92,7 @@ h1, h2 {
     cursor: pointer;
 }
 
-/* Toggle Switch Styles */
+/* Toggle Switch Styles
 .switch {
     position: relative;
     display: inline-block;
@@ -150,7 +150,7 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
-}
+} */
 
 
 .options-group {
@@ -196,10 +196,6 @@ input:checked + .slider:before {
         flex-direction: column;
     }
 
-    .options-group span {
-        /* Adjust as necessary for smaller screens */
-    }
-
     .start-over, .search {
         width: auto; /* Or specific size for smaller screens */
         padding: 10px; /* Adjust as necessary */
@@ -207,26 +203,165 @@ input:checked + .slider:before {
     }
 }
 
+/* Base styles for tri-state switch container */
 .tri-state-switch {
-    position: relative;
-    width: 90px;
-    height: 30px;
-    background: #ccc;
-    border-radius: 15px;
-    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
 }
 
-.tri-state-switch .slider {
+/* Hide the radio buttons visually, but keep them accessible */
+.tri-state-switch input[type="radio"] {
     position: absolute;
-    top: 2px;
-    bottom: 2px;
-    width: 30px;
-    background: #FFF;
-    border-radius: 15px;
-    transition: left 0.25s ease;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
 }
 
-/* The left position of the slider for each state */
-[data-state="0"] .slider { left: 2px; }
-[data-state="1"] .slider { left: 30px; }
-[data-state="2"] .slider { left: 60px; }
+/* Style the labels to look like toggle parts */
+.tri-state-switch label {
+    background-color: #ccc;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    flex-grow: 1;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.25s ease-out;
+}
+
+/* Highlight the selected option */
+.tri-state-switch input[type="radio"]:checked + label {
+    background-color: #00356B;
+    color: white;
+}
+
+/* Round the corners on the ends */
+.left-option {
+    border-radius: 15px 0 0 15px;
+}
+.right-option {
+    border-radius: 0 15px 15px 0;
+}
+
+/* Special style for the middle option */
+.middle-option {
+    border-left: none;
+    border-right: none;
+}
+
+/* Recommendation Page Styles */
+/* ... existing styles ... */
+
+.recommendation-container {
+    /* Adjust the max-width if necessary to fit your screen */
+    max-width: 1000px;
+    padding: 20px;
+    margin: 2% auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.spot-image-container {
+    border: 3px solid #00356B; /* Yale Blue border */
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+#study-spot-image {
+    max-width: 80%;
+    max-height: 500px; /* Adjust based on your layout needs */
+}
+
+/* Start Over and Go Back button styles */
+.start-over, .go-back {
+    background-color: #FFFFFF;
+    color: #00356B;
+    border: 2px solid #00356B;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.start-over:hover, .go-back:hover {
+    background-color: #00356B;
+    color: white;
+}
+
+/* Adjusting the positions */
+.start-over {
+    left: 20px; /* Bottom left corner */
+}
+
+.go-back {
+    right: 20px; /* Bottom right corner */
+}
+
+/* "Show me More" button style */
+.more-info-button {
+    background-color: #00356B; /* Yale Blue background */
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    right: 10%; /* Adjust as necessary */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.more-info-button:hover {
+    background-color: #002244; /* A darker shade of Yale Blue */
+}
+
+
+.help-container {
+    max-width: 700px;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+    background: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.help-list {
+    list-style: none;
+    padding: 0;
+}
+
+.help-list li {
+    font-size: 1.5em;
+    margin: 20px 0;
+    color: #00356B;
+}
+
+.help-list .yale-blue {
+    color: #00356B;
+    font-weight: bold;
+}
+
+.start-over {
+    background-color: #FFFFFF;
+    color: #00356B;
+    border: 2px solid #00356B;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.start-over:hover {
+    background-color: #00356B;
+    color: #FFFFFF;
+}
