@@ -49,13 +49,20 @@ if (window.location.pathname.includes('/preferences.html')) {
   var quietNoPreferenceButton = document.getElementById('no-preference-noise');
   var noiseButton = document.getElementById('noise-option');
   
+  var quietOptions = [quietButton, quietNoPreferenceButton, noiseButton];
+  
   var shortButton = document.getElementById('short-walk-option');
   var shortNoPreferenceButton = document.getElementById('no-preference-walk');
   var longButton = document.getElementById('long-walk-option');
   
+  var shortOptions = [shortButton, shortNoPreferenceButton, longButton];
+  
   var stemButton = document.getElementById('stem-option');
   var stemNoPreferenceButton = document.getElementById('no-preference-major');
   var humanitiesButton = document.getElementById('humanities-option');
+  
+  var stemOptions = [stemButton, stemNoPreferenceButton, humanitiesButton];
+
 
   startOverButton.addEventListener('click', startOverButtonClick);
   searchButton.addEventListener('click', searchButtonClick);
@@ -71,17 +78,35 @@ if (window.location.pathname.includes('/preferences.html')) {
     indoorOptionClicked(event, indoorOptions, "left");
   });
 
-  quietButton.addEventListener('click', quietOptionClicked);
-  quietNoPreferenceButton.addEventListener('click', quietOptionClicked);
-  noiseButton.addEventListener('click', quietOptionClicked);
+  quietButton.addEventListener('click', function(event) {
+    quietOptionClicked(event, quietOptions, "right");
+  });
+  quietNoPreferenceButton.addEventListener('click', function(event) {
+    quietOptionClicked(event, quietOptions, "middle");
+  });
+  noiseButton.addEventListener('click', function(event) {
+    quietOptionClicked(event, quietOptions, "left");
+  });
 
-  shortButton.addEventListener('click', shortOptionClicked);
-  shortNoPreferenceButton.addEventListener('click', shortOptionClicked);
-  longButton.addEventListener('click', shortOptionClicked);
+  shortButton.addEventListener('click', function(event) {
+    shortOptionClicked(event, shortOptions, "right");
+  });
+  shortNoPreferenceButton.addEventListener('click', function(event) {
+    shortOptionClicked(event, shortOptions, "middle");
+  });
+  longButton.addEventListener('click', function(event) {
+    shortOptionClicked(event, shortOptions, "left");
+  });
 
-  stemButton.addEventListener('click', stemOptionClicked);
-  stemNoPreferenceButton.addEventListener('click', stemOptionClicked);
-  humanitiesButton.addEventListener('click', stemOptionClicked);
+  stemButton.addEventListener('click', function(event) {
+    stemOptionClicked(event, stemOptions, "left");
+  });
+  stemNoPreferenceButton.addEventListener('click', function(event) {
+    stemOptionClicked(event, stemOptions, "middle");
+  });
+  humanitiesButton.addEventListener('click', function(event) {
+    stemOptionClicked(event, stemOptions, "right");
+  });
   
   elements.push({element:startOverButton, counter:0});
   elements.push({element:searchButton, counter:0});
@@ -102,6 +127,11 @@ if (window.location.pathname.includes('/preferences.html')) {
   elements.push({element:stemButton, counter:0});
   elements.push({element:stemNoPreferenceButton, counter:0});
   elements.push({element:humanitiesButton, counter:0});
+
+  indoorNoPreference.click();
+  quietNoPreferenceButton.click();
+  shortNoPreferenceButton.click();
+  stemNoPreferenceButton.click();
 
 }
 
@@ -129,22 +159,58 @@ function indoorOptionClicked(event, options, type) {
   if (type == "middle") {
     userPreferences.inOutdoor = "Both";
   }
-  if (type == "Outdoor") {
+  if (type == "left") {
     userPreferences.inOutdoor = "Outdoor";
   }
 }
 
-
-function quietOptionClicked(event, type) {
-  event.target.classList.add('options-buttons-clicked')
+function quietOptionClicked(event, options, type) {
+  options.forEach( element => {
+    element.classList.remove('options-buttons-clicked');
+  });
+  event.target.classList.add('options-buttons-clicked');
+  if (type == "right") {
+    userPreferences.quietNoise = "Quiet";
+  }
+  if (type == "middle") {
+    userPreferences.quietNoise = "Both";
+  }
+  if (type == "left") {
+    userPreferences.quietNoise = "Noise";
+  }
 }
 
-function shortOptionClicked(event, type) {
-  event.target.classList.add('options-buttons-clicked')
+function shortOptionClicked(event, options, type) {
+  options.forEach( element => {
+    element.classList.remove('options-buttons-clicked');
+  });
+  event.target.classList.add('options-buttons-clicked');
+  if (type == "right") {
+    userPreferences.distance = "< 10";
+  }
+  if (type == "middle") {
+    userPreferences.distance = "Both";
+  }
+  if (type == "left") {
+    userPreferences.distance = "> 10";
+  }
 }
 
-function stemOptionClicked(event, type) {
-  event.target.classList.add('options-buttons-clicked')
+
+function stemOptionClicked(event, options, type) {
+  options.forEach( element => {
+    element.classList.remove('options-buttons-clicked');
+  });
+  event.target.classList.add('options-buttons-clicked');
+  if (type == "right") {
+    userPreferences.type = "STEM";
+  }
+  if (type == "middle") {
+    userPreferences.type = "Both";
+  }
+  if (type == "left") {
+    userPreferences.type = "Humanities";
+  }
 }
 
 function startButtonClick() {
