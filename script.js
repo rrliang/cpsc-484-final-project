@@ -317,7 +317,13 @@ function filterStudySpots(preferences) {
              (preferences.type === spot.type || preferences.type === 'Both');
   });
 }
-
+function displayRecommendation(selectedSpot) {
+  window.location.href = "recommendation.html";
+  document.getElementById('study-spot-name').innerText = selectedSpot['location'];
+ }
+   
+  
+ 
 var elements = [];
 
 // Add all interactable elements of specific window
