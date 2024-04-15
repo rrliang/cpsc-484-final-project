@@ -86,10 +86,16 @@ h1, h2 {
     background-color: #00356B;
     color: #FFFFFF;
     border: none;
-    padding: 10px 15px;
-    font-size: 1.2em;
-    border-radius: 50%;
+    padding: 15px 20px; /* Increased padding */
+    font-size: 1.4em; /* Larger font size */
+    border-radius: 50%; /* Circular, adjust if needed */
     cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition for interaction */
+}
+
+.help-button:hover {
+    transform: scale(1.1); /* Slightly larger on hover */
+    background-color: #002244; /* Darker on hover */
 }
 
 /* Toggle Switch Styles
@@ -382,4 +388,25 @@ input:checked + .slider:before {
 .start-over:hover {
     background-color: #00356B;
     color: #FFFFFF;
+}
+
+
+/* style.css */
+.go-back-help {
+    position: absolute;
+    top: 20px;
+    left: 20px; /* Position it on the right for distinction */
+    background-color: #00356B;
+    color: #FFFFFF;
+    border: none;
+    padding: 15px 20px; /* Increased padding */
+    font-size: 1.4em; /* Larger font size */
+    border-radius: 50%; /* Maintain the circular shape */
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Consistent transition effects */
+}
+
+.go-back-help:hover {
+    transform: scale(1.1); /* Slightly larger on hover */
+    background-color: #002244; /* Darker on hover */
 }
