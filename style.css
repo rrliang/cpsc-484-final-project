@@ -205,6 +205,8 @@ input:checked + .slider:before {
 
 /* Base styles for tri-state switch container */
 .tri-state-switch {
+    
+    font-size: 1.2em;
     display: flex;
     justify-content: space-between;
     margin: 10px 0;
@@ -236,10 +238,26 @@ input:checked + .slider:before {
     color: white;
 }
 
+.option-buttons {
+    background-color: #CCCCCC;
+    /* color: #FFFFFF; */
+    border: none;
+    padding: 10px 15px;
+    font-size: 1.2em;
+}
+
+.option-buttons:active {
+    background-color: #00356B;
+    color: white;
+}
+
+
 /* Round the corners on the ends */
 .left-option {
     border-radius: 15px 0 0 15px;
 }
+
+
 .right-option {
     border-radius: 0 15px 15px 0;
 }

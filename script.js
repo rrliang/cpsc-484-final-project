@@ -58,15 +58,6 @@ if (window.location.pathname.includes('/preferences.html')) {
   startOverButton.addEventListener('click', startOverButtonClick);
   searchButton.addEventListener('click', searchButtonClick);
   helpButton.addEventListener('click', helpButtonClick);
-
-  // console.log(indoorButton.getBoundingClientRect());
-  // console.log(indoorNoPreference.getBoundingClientRect());
-  // console.log(outdoorButton.getBoundingClientRect());
-  // console.log(quietButton.getBoundingClientRect());
-  // console.log(quietNoPreferenceButton.getBoundingClientRect());
-  // console.log(noiseButton.getBoundingClientRect());
-  // console.log(shortButton.getBoundingClientRect());
-  // console.log(shortNoPreferenceButton.getBoundingClientRect());
   
   elements.push({element:startOverButton, counter:0});
   elements.push({element:searchButton, counter:0});
@@ -178,6 +169,8 @@ var frames = {
         cursor.style.zIndex = '9999'; // ensure cursor is always ontop
 
         var cursorRect = getElementPosition(cursor);
+        
+        // console.log("CURSOR RECT: ", cursorRect);
         // Loop through all interactable elements in the page
         // Check to see if the cursor is interacting with element
         // If the cursor is ontop of element, start adding to counter
@@ -185,7 +178,8 @@ var frames = {
         // Interact with the object, by clicking it
         elements.forEach( pair => {
           var rect1 = getElementPosition(pair.element);
-          if (!isOverlap(rect1, cursorRect)) {
+          if (!isOverlap(rect1, cursorRect) || !isOverlap(cursorRect, rect1)) {
+            console.log('got here')
             pair.element.classList.add('hovering');
             cursor.src ="img/mouse-over-cursor.png";
             pair.counter += 1;
