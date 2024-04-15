@@ -8,7 +8,7 @@ $(document).ready(function() {
 });
 
 //Defualts to no preferences, which essentially is both
-const userPreferences = {
+window.userPreferences = {
   distance: 'Both',
   inOutdoor: 'Both',
   quietNoise: 'Both',
@@ -443,14 +443,16 @@ if (window.location.pathname.includes('/preferences.html')) {
   stemNoPreferenceButton.click();
 
 }
-var filteredSpots = NaN;
+// var filteredSpots = NaN;
 if (window.location.pathname.includes('/loading.html')) {
-  filteredSpots = filterStudySpots(userPreferences);
   setTimeout(() => {window.location = "./recommendation.html"}, 2000);
 
 }
 
 if (window.location.pathname.includes('/recommendation.html')) {
+  console.log(window.userPreferences)
+  filteredSpots = filterStudySpots(window.userPreferences);
+  console.log(filteredSpots)
   var startOverButton = document.getElementById('start-over-button');
   var helpButton = document.getElementById('help-button');
   startOverButton.addEventListener('click', startOverButtonClick);
@@ -465,13 +467,14 @@ function indoorOptionClicked(event, options, type) {
   });
   event.target.classList.add('options-buttons-clicked');
   if (type == "right") {
-    userPreferences.inOutdoor = "Indoor";
+    console.log("got here!")
+    window.userPreferences.inOutdoor = "Indoor";
   }
   if (type == "middle") {
-    userPreferences.inOutdoor = "Both";
+    window.userPreferences.inOutdoor = "Both";
   }
   if (type == "left") {
-    userPreferences.inOutdoor = "Outdoor";
+    window.userPreferences.inOutdoor = "Outdoor";
   }
 }
 
@@ -481,13 +484,13 @@ function quietOptionClicked(event, options, type) {
   });
   event.target.classList.add('options-buttons-clicked');
   if (type == "right") {
-    userPreferences.quietNoise = "Quiet";
+    window.userPreferences.quietNoise = "Quiet";
   }
   if (type == "middle") {
-    userPreferences.quietNoise = "Both";
+    window.userPreferences.quietNoise = "Both";
   }
   if (type == "left") {
-    userPreferences.quietNoise = "Noise";
+    window.userPreferences.quietNoise = "Noise";
   }
 }
 
@@ -497,13 +500,13 @@ function shortOptionClicked(event, options, type) {
   });
   event.target.classList.add('options-buttons-clicked');
   if (type == "right") {
-    userPreferences.distance = "< 10";
+    window.userPreferences.distance = "< 10";
   }
   if (type == "middle") {
-    userPreferences.distance = "Both";
+    window.userPreferences.distance = "Both";
   }
   if (type == "left") {
-    userPreferences.distance = "> 10";
+    window.userPreferences.distance = "> 10";
   }
 }
 
@@ -514,13 +517,13 @@ function stemOptionClicked(event, options, type) {
   });
   event.target.classList.add('options-buttons-clicked');
   if (type == "right") {
-    userPreferences.type = "STEM";
+    window.userPreferences.type = "STEM";
   }
   if (type == "middle") {
-    userPreferences.type = "Both";
+    window.userPreferences.type = "Both";
   }
   if (type == "left") {
-    userPreferences.type = "Humanities";
+    window.userPreferences.type = "Humanities";
   }
 }
 
