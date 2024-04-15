@@ -7,13 +7,6 @@ $(document).ready(function() {
   frames.start();
 });
 
-//Defualts to no preferences, which essentially is both
-window.userPreferences = {
-  distance: 'Both',
-  inOutdoor: 'Both',
-  quietNoise: 'Both',
-  type: 'Both'
-};
 
 const studySpots = [
   {
@@ -336,6 +329,15 @@ if (window.location.pathname.includes('/index.html')) {
 }
 
 if (window.location.pathname.includes('/preferences.html')) {
+  //Defualts to no preferences, which essentially is both
+  var storedPreferences = localStorage.getItem('userPreferences');
+  window.userPreferences = storedPreferences ? JSON.parse(storedPreferences) : {
+    distance: 'Both',
+    inOutdoor: 'Both',
+    quietNoise: 'Both',
+    type: 'Both'
+  };
+
   var startOverButton = document.getElementById('start-over-button');
   var searchButton = document.getElementById('search-button');
   var helpButton = document.getElementById('help-button');
@@ -445,8 +447,18 @@ if (window.location.pathname.includes('/preferences.html')) {
 }
 // var filteredSpots = NaN;
 if (window.location.pathname.includes('/loading.html')) {
+  displayStoredPreferences();
   setTimeout(() => {window.location = "./recommendation.html"}, 2000);
+}
 
+function displayStoredPreferences() {
+  const preferences = JSON.parse(localStorage.getItem('userPreferences'));
+  if (preferences) {
+      document.getElementById('location-preference').textContent = `Location: ${preferences.inOutdoor || 'No preference'}`;
+      document.getElementById('distance-preference').textContent = `Distance: ${preferences.distance || 'No preference'}`;
+      document.getElementById('noise-preference').textContent = `Noise Level: ${preferences.quietNoise || 'No preference'}`;
+      document.getElementById('type-preference').textContent = `Study Type: ${preferences.type || 'No preference'}`;
+  }
 }
 
 if (window.location.pathname.includes('/recommendation.html')) {
@@ -536,6 +548,7 @@ function startOverButtonClick() {
 }
 
 function searchButtonClick() {
+  localStorage.setItem('userPreferences', JSON.stringify(window.userPreferences));
   window.location = "./loading.html";
 }
 
