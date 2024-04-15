@@ -252,9 +252,20 @@ input:checked + .slider:before {
     font-size: 1.2em;
 }
 
-.option-buttons:active {
+.options-buttons-clicked {
     background-color: #00356B;
     color: white;
+}
+
+
+/* Round the corners on the ends */
+.left-option {
+    border-radius: 15px 0 0 15px;
+}
+
+
+.right-option {
+    border-radius: 0 15px 15px 0;
 }
 
 

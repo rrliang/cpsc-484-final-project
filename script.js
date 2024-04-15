@@ -20,12 +20,6 @@ var elements = [];
 // Add all interactable elements of specific window
 // (and their counters) to the elements array
 
-if (window.location.pathname.includes('/index.html')) {
-  var startButton = document.getElementById('start-button');
-  startButton.addEventListener('click', startButtonClick);
-  elements.push({element:startButton, counter:0});
-}
-
 if (window.location.pathname.includes('/preferences.html')) {
   var startOverButton = document.getElementById('start-over-button');
   var searchButton = document.getElementById('search-button');
@@ -42,6 +36,8 @@ if (window.location.pathname.includes('/preferences.html')) {
   var indoorButton = document.getElementById('indoor-option');
   var indoorNoPreference = document.getElementById('no-preference-location');
   var outdoorButton = document.getElementById('outdoor-option');
+
+  var indoorOptions = [indoorButton, indoorNoPreference, outdoorButton];
   
   var quietButton = document.getElementById('quiet-option');
   var quietNoPreferenceButton = document.getElementById('no-preference-noise');
@@ -58,6 +54,28 @@ if (window.location.pathname.includes('/preferences.html')) {
   startOverButton.addEventListener('click', startOverButtonClick);
   searchButton.addEventListener('click', searchButtonClick);
   helpButton.addEventListener('click', helpButtonClick);
+
+  indoorButton.addEventListener('click', function(event) {
+    indoorOptionClicked(event, indoorOptions, "right");
+  });
+  indoorNoPreference.addEventListener('click', function(event) {
+    indoorOptionClicked(event, indoorOptions, "middle");
+  });
+  outdoorButton.addEventListener('click', function(event) {
+    indoorOptionClicked(event, indoorOptions, "left");
+  });
+
+  quietButton.addEventListener('click', quietOptionClicked);
+  quietNoPreferenceButton.addEventListener('click', quietOptionClicked);
+  noiseButton.addEventListener('click', quietOptionClicked);
+
+  shortButton.addEventListener('click', shortOptionClicked);
+  shortNoPreferenceButton.addEventListener('click', shortOptionClicked);
+  longButton.addEventListener('click', shortOptionClicked);
+
+  stemButton.addEventListener('click', stemOptionClicked);
+  stemNoPreferenceButton.addEventListener('click', stemOptionClicked);
+  humanitiesButton.addEventListener('click', stemOptionClicked);
   
   elements.push({element:startOverButton, counter:0});
   elements.push({element:searchButton, counter:0});
@@ -94,6 +112,34 @@ if (window.location.pathname.includes('/recommendation.html')) {
   elements.push({element:helpButton, counter:0});
 }
 
+function indoorOptionClicked(event, options, type) {
+  options.forEach( element => {
+    element.classList.remove('options-buttons-clicked');
+  });
+  event.target.classList.add('options-buttons-clicked');
+  if (type == "right") {
+    userPreferences.inOutdoor = "Indoor";
+  }
+  if (type == "middle") {
+    userPreferences.inOutdoor = "Both";
+  }
+  if (type == "Outdoor") {
+    userPreferences.inOutdoor = "Outdoor";
+  }
+}
+
+function quietOptionClicked(event, type) {
+  event.target.classList.add('options-buttons-clicked')
+}
+
+function shortOptionClicked(event, type) {
+  event.target.classList.add('options-buttons-clicked')
+}
+
+function stemOptionClicked(event, type) {
+  event.target.classList.add('options-buttons-clicked')
+}
+
 function startButtonClick() {
   window.location = "./preferences.html";
 }
@@ -110,6 +156,8 @@ function helpButtonClick() {
   window.location.href = "./help.html";
   // console.log('TODO: HELP PAGE')
 }
+
+
 
 
 // This function will return the top, bottom, left, right x, y positions of given element
