@@ -30,40 +30,25 @@
 
         <div class="options-group">
             <div class="tri-state-switch">
-                <input type="radio" id="quiet-option" name="noise" value="quiet"/>
-                <label for="quiet-option" class="left-option">Quiet</label>
-                
-                <input type="radio" id="no-preference-noise" name="noise" value="no-preference" checked/>
-                <label for="no-preference-noise" class="middle-option">No Preference</label>
-                
-                <input type="radio" id="noise-option" name="noise" value="noise"/>
-                <label for="noise-option" class="right-option">Background Noise</label>
+            <button class="option-buttons left-option" type="radio" id="quiet-option">Quiet</button>
+            <button class="option-buttons" type="radio" id="no-preference-noise">No Preference</button>
+            <button class="option-buttons right-option"  type="radio" id="noise-option">Background Noise</button>
             </div>
         </div>
 
         <div class="options-group">
             <div class="tri-state-switch">
-                <input type="radio" id="short-walk-option" name="walk" value="short"/>
-                <label for="short-walk-option" class="left-option">&lt; 10 min walk</label>
-                
-                <input type="radio" id="no-preference-walk" name="walk" value="no-preference" checked/>
-                <label for="no-preference-walk" class="middle-option">No Preference</label>
-                
-                <input type="radio" id="long-walk-option" name="walk" value="long"/>
-                <label for="long-walk-option" class="right-option">&gt; 10 min walk</label>
+                <button class="option-buttons left-option" id="short-walk-option">&lt; 10 min walk</button>
+                <button class="option-buttons active middle-option" id="no-preference-walk">No preference</button>
+                <button class="option-buttons right-option" id="long-walk-option">&gt; 10 min walk</button>
             </div>
         </div>
 
         <div class="options-group">
             <div class="tri-state-switch">
-                <input type="radio" id="stem-option" name="major" value="stem"/>
-                <label for="stem-option" class="left-option">STEM</label>
-                
-                <input type="radio" id="no-preference-major" name="major" value="no-preference" checked/>
-                <label for="no-preference-major" class="middle-option">No Preference</label>
-                
-                <input type="radio" id="humanities-option" name="major" value="humanities"/>
-                <label for="humanities-option" class="right-option">Humanities</label>
+                <button class="option-buttons left-option" id="stem-option">STEM</button>
+                <button class="option-buttons active middle-option" id="no-preference-major">No Preference</button>
+                <button class="option-buttons right-option" id="humanities-option">Humanities</button>
             </div>
         </div>
     </div>
