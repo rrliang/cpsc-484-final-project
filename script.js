@@ -31,7 +31,7 @@ if (window.location.pathname.includes('/preferences.html')) {
 }
 
 if (window.location.pathname.includes('/loading.html')) {
-  setTimeout(() => {window.location = "./studyspace.html"}, 2000);
+  setTimeout(() => {window.location = "./recommendation.html"}, 2000);
 }
 
 if (window.location.pathname.includes('/recommendation.html')) {
