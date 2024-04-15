@@ -20,6 +20,12 @@ var elements = [];
 // Add all interactable elements of specific window
 // (and their counters) to the elements array
 
+if (window.location.pathname.includes('/index.html')) {
+  var startButton = document.getElementById('start-button');
+  startButton.addEventListener('click', startButtonClick);
+  elements.push({element:startButton, counter:0});
+}
+
 if (window.location.pathname.includes('/preferences.html')) {
   var startOverButton = document.getElementById('start-over-button');
   var searchButton = document.getElementById('search-button');
@@ -127,6 +133,7 @@ function indoorOptionClicked(event, options, type) {
     userPreferences.inOutdoor = "Outdoor";
   }
 }
+
 
 function quietOptionClicked(event, type) {
   event.target.classList.add('options-buttons-clicked')
