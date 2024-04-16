@@ -37,10 +37,10 @@ const studySpots = [
       type: 'STEM',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/Tptd4BpT4BqKE9xF9',
-      image: 'study_images/MedSchool.jpg'
+      image: 'study_images/Med_School.jpg'
   },
   {
-      location: 'Yale SOM',
+      location: 'Yale School of Management',
       distance: '< 10',
       inOutdoor: 'Indoor',
       quietNoise: 'Both',
@@ -134,7 +134,6 @@ const studySpots = [
       distance: '> 10',
       inOutdoor: 'Indoor',
       quietNoise: 'Noise',
-      type: 'Both',
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/9AdZYWyydudApLkQA',
@@ -310,10 +309,36 @@ function filterStudySpots(preferences) {
              (preferences.type === spot.type || preferences.type === 'Both');
   });
 }
-function displayRecommendation(selectedSpot) {
-  window.location.href = "recommendation.html";
-  document.getElementById('study-spot-name').innerText = selectedSpot['location'];
- }
+
+function displayRecommendation(spots, index) {
+
+  document.getElementById('study-spot-image').src = spots[index].image;
+  document.getElementById('study-spot-name').innerText = spots[index].location;
+
+  document.getElementById('no-spots').innerText = index+1 + " out of " + spots.length;
+
+  var goLeftButton = document.getElementById('go-left');
+  var goRightButton = document.getElementById('go-right');
+  if (index == 0) {
+    goLeftButton.style.display="none";
+  } else {
+    goLeftButton.style.display="block";
+  }
+  if (index == spots.length - 1) {
+    goRightButton.style.display="none";
+  } else {
+    goRightButton.style.display="block";
+  }
+
+  goLeftButton.addEventListener('click', function(event) {
+    displayRecommendation(spots, index-1);
+  });
+  goRightButton.addEventListener('click', function(event) {
+    displayRecommendation(spots, index+1);
+  });
+  elements.push({element:goLeftButton, counter:0});
+  elements.push({element:goRightButton, counter:0});
+}
 
 
 
@@ -331,12 +356,20 @@ if (window.location.pathname.includes('/index.html')) {
 if (window.location.pathname.includes('/preferences.html')) {
   //Defualts to no preferences, which essentially is both
   var storedPreferences = localStorage.getItem('userPreferences');
-  window.userPreferences = storedPreferences ? JSON.parse(storedPreferences) : {
-    distance: 'Both',
-    inOutdoor: 'Both',
-    quietNoise: 'Both',
-    type: 'Both'
-  };
+  // console.log(storedPreferences)
+  if (storedPreferences == "undefined" || storedPreferences == null) {
+    window.userPreferences =
+    {
+      distance: 'Both',
+      inOutdoor: 'Both',
+      quietNoise: 'Both',
+      type: 'Both'
+    };
+  } else {
+    console.log('got here')
+    console.log(JSON.parse(storedPreferences));
+    window.userPreferences = JSON.parse(storedPreferences);
+  }
 
   var startOverButton = document.getElementById('start-over-button');
   var searchButton = document.getElementById('search-button');
@@ -439,15 +472,55 @@ if (window.location.pathname.includes('/preferences.html')) {
   elements.push({element:stemNoPreferenceButton, counter:0});
   elements.push({element:humanitiesButton, counter:0});
 
-  indoorNoPreference.click();
-  quietNoPreferenceButton.click();
-  shortNoPreferenceButton.click();
-  stemNoPreferenceButton.click();
+  clickPreferences();
 
 }
-// var filteredSpots = NaN;
+
+function clickPreferences() {
+  if (window.userPreferences.distance == 'Both') {
+    shortNoPreferenceButton.click();
+  } else if (window.userPreferences.distance == '< 10') {
+    shortButton.click();
+  } else if (window.userPreferences.distance == '> 10') {
+    longButton.click();
+  }
+
+  if (window.userPreferences.inOutdoor == 'Both') {
+    indoorNoPreference.click();
+  } else if (window.userPreferences.inOutdoor == 'Indoor') {
+    indoorButton.click();
+  } else if (window.userPreferences.inOutdoor == 'Outdoor') {
+    outdoorButton.click();
+  }
+
+  if (window.userPreferences.quietNoise == 'Both') {
+    quietNoPreferenceButton.click();
+  } else if (window.userPreferences.quietNoise == 'Quiet') {
+    quietButton.click();
+  } else if (window.userPreferences.quietNoise == 'Noise') {
+    noiseButton.click();
+  }
+
+  if (window.userPreferences.type == 'Both') {
+    stemNoPreferenceButton.click();
+  } else if (window.userPreferences.type == 'STEM') {
+    stemButton.click();
+  } else if (window.userPreferences.type == 'Humanities') {
+    humanitiesButton.click();
+  }
+}
+
 if (window.location.pathname.includes('/loading.html')) {
   displayStoredPreferences();
+  var startOverButton = document.getElementById('start-over-button');
+  var helpButton = document.getElementById('help-button');
+  var goBackButton = document.getElementById('go-back-button');
+  startOverButton.addEventListener('click', startOverButtonClick);
+  helpButton.addEventListener('click', helpButtonClick);
+  goBackButton.addEventListener('click', startButtonClick);
+  elements.push({element:startOverButton, counter:0});
+  elements.push({element:helpButton, counter:0});
+  elements.push({element:goBackButton, counter:0});
   setTimeout(() => {window.location = "./recommendation.html"}, 2000);
 }
 
@@ -465,12 +538,30 @@ if (window.location.pathname.includes('/recommendation.html')) {
   const preferences = JSON.parse(localStorage.getItem('userPreferences'));
   filteredSpots = filterStudySpots(preferences);
   console.log(filteredSpots)
+  if (filteredSpots.length == 0) {
+    console.log('NO STUDY SPACES FOUND');
+    document.getElementById('recommendation-container').style.display="none";
+    document.getElementById('no-spots').style.display="block";
+    var goLeftButton = document.getElementById('go-left');
+    var goRightButton = document.getElementById('go-right');
+    goLeftButton.style.display="none";
+    goRightButton.style.display="none";
+
+  } else if (filteredSpots.length > 0) {
+    document.getElementById('recommendation-container').style.display="block";
+    // document.getElementById('no-spots').style.display="none";
+    console.log("Number of spots found: ", filteredSpots.length);
+    displayRecommendation(filteredSpots, 0);
+  }
   var startOverButton = document.getElementById('start-over-button');
   var helpButton = document.getElementById('help-button');
+  var goBackButton = document.getElementById('go-back-button');
   startOverButton.addEventListener('click', startOverButtonClick);
   helpButton.addEventListener('click', helpButtonClick);
+  goBackButton.addEventListener('click', startButtonClick);
   elements.push({element:startOverButton, counter:0});
   elements.push({element:helpButton, counter:0});
+  elements.push({element:goBackButton, counter:0});
 }
 
 function indoorOptionClicked(event, options, type) {
@@ -479,7 +570,6 @@ function indoorOptionClicked(event, options, type) {
   });
   event.target.classList.add('options-buttons-clicked');
   if (type == "right") {
-    console.log("got here!")
     window.userPreferences.inOutdoor = "Indoor";
   }
   if (type == "middle") {
@@ -544,6 +634,7 @@ function startButtonClick() {
 }
 
 function startOverButtonClick() {
+  localStorage.clear();
   window.location = "./index.html";
 }
 
