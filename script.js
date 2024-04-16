@@ -322,22 +322,24 @@ function displayRecommendation(spots, index) {
   if (index == 0) {
     goLeftButton.style.display="none";
   } else {
+
+    goLeftButton.addEventListener('click', function(event) {
+      displayRecommendation(spots, index-1);
+    });
+    elements.push({element:goLeftButton, counter:0});
     goLeftButton.style.display="block";
   }
   if (index == spots.length - 1) {
     goRightButton.style.display="none";
   } else {
+
+    goRightButton.addEventListener('click', function(event) {
+      displayRecommendation(spots, index+1);
+    });
+    elements.push({element:goRightButton, counter:0});
     goRightButton.style.display="block";
   }
 
-  goLeftButton.addEventListener('click', function(event) {
-    displayRecommendation(spots, index-1);
-  });
-  goRightButton.addEventListener('click', function(event) {
-    displayRecommendation(spots, index+1);
-  });
-  elements.push({element:goLeftButton, counter:0});
-  elements.push({element:goRightButton, counter:0});
 }
 
 
@@ -549,8 +551,6 @@ if (window.location.pathname.includes('/recommendation.html')) {
 
   } else if (filteredSpots.length > 0) {
     document.getElementById('recommendation-container').style.display="block";
-    // document.getElementById('no-spots').style.display="none";
-    console.log("Number of spots found: ", filteredSpots.length);
     displayRecommendation(filteredSpots, 0);
   }
   var startOverButton = document.getElementById('start-over-button');
