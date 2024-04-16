@@ -314,9 +314,9 @@ function displayRecommendation(selectedSpot) {
   window.location.href = "recommendation.html";
   document.getElementById('study-spot-name').innerText = selectedSpot['location'];
  }
-   
-  
- 
+
+
+
 var elements = [];
 
 // Add all interactable elements of specific window
@@ -355,23 +355,23 @@ if (window.location.pathname.includes('/preferences.html')) {
   var outdoorButton = document.getElementById('outdoor-option');
 
   var indoorOptions = [indoorButton, indoorNoPreference, outdoorButton];
-  
+
   var quietButton = document.getElementById('quiet-option');
   var quietNoPreferenceButton = document.getElementById('no-preference-noise');
   var noiseButton = document.getElementById('noise-option');
-  
+
   var quietOptions = [quietButton, quietNoPreferenceButton, noiseButton];
-  
+
   var shortButton = document.getElementById('short-walk-option');
   var shortNoPreferenceButton = document.getElementById('no-preference-walk');
   var longButton = document.getElementById('long-walk-option');
-  
+
   var shortOptions = [shortButton, shortNoPreferenceButton, longButton];
-  
+
   var stemButton = document.getElementById('stem-option');
   var stemNoPreferenceButton = document.getElementById('no-preference-major');
   var humanitiesButton = document.getElementById('humanities-option');
-  
+
   var stemOptions = [stemButton, stemNoPreferenceButton, humanitiesButton];
 
 
@@ -410,15 +410,15 @@ if (window.location.pathname.includes('/preferences.html')) {
   });
 
   stemButton.addEventListener('click', function(event) {
-    stemOptionClicked(event, stemOptions, "left");
+    stemOptionClicked(event, stemOptions, "right");
   });
   stemNoPreferenceButton.addEventListener('click', function(event) {
     stemOptionClicked(event, stemOptions, "middle");
   });
   humanitiesButton.addEventListener('click', function(event) {
-    stemOptionClicked(event, stemOptions, "right");
+    stemOptionClicked(event, stemOptions, "left");
   });
-  
+
   elements.push({element:startOverButton, counter:0});
   elements.push({element:searchButton, counter:0});
   elements.push({element:helpButton, counter:0});
@@ -571,9 +571,9 @@ function isOverlap(rect1, rect2) {
   var isOverlap = false;
 
   if (
-    rect2.top < rect1.top || 
+    rect2.top < rect1.top ||
     rect2.right > rect1.right ||
-    rect2.bottom > rect1.bottom || 
+    rect2.bottom > rect1.bottom ||
     rect2.left < rect1.left) {
 
     isOverlap = true;
@@ -617,7 +617,7 @@ var frames = {
         cursor.style.zIndex = '9999'; // ensure cursor is always ontop
 
         var cursorRect = getElementPosition(cursor);
-        
+
         // console.log("CURSOR RECT: ", cursorRect);
         // Loop through all interactable elements in the page
         // Check to see if the cursor is interacting with element
@@ -642,13 +642,13 @@ var frames = {
             pair.counter = 0;
           }
         });
-        
+
       } else {
         document.getElementById('cursor').style.visibility = "hidden";
       }
     };
   },
-  
+
   show: function(frame) {
     if (frame.people.length < 1) {
       return null;
