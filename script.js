@@ -462,8 +462,8 @@ function displayStoredPreferences() {
 }
 
 if (window.location.pathname.includes('/recommendation.html')) {
-  console.log(window.userPreferences)
-  filteredSpots = filterStudySpots(window.userPreferences);
+  const preferences = JSON.parse(localStorage.getItem('userPreferences'));
+  filteredSpots = filterStudySpots(preferences);
   console.log(filteredSpots)
   var startOverButton = document.getElementById('start-over-button');
   var helpButton = document.getElementById('help-button');
