@@ -2,6 +2,7 @@
 
 // Host given by tutorial page, we are display 1
 var host = "cpsc484-01.stdusr.yale.internal:8888";
+var globalPersonID = 0;
 
 $(document).ready(function() {
   frames.start();
@@ -355,6 +356,13 @@ if (window.location.pathname.includes('/index.html')) {
   elements.push({element:startButton, counter:0});
 }
 
+if (window.location.pathname.includes('/help.html')) {
+  var goBackButton = document.getElementById('go-back-help');
+  goBackButton.addEventListener('click', startButtonClick);
+  elements.push({element:goBackButton, counter:0});
+}
+
+
 if (window.location.pathname.includes('/preferences.html')) {
   //Defualts to no preferences, which essentially is both
   var storedPreferences = localStorage.getItem('userPreferences');
@@ -368,7 +376,6 @@ if (window.location.pathname.includes('/preferences.html')) {
       type: 'Both'
     };
   } else {
-    console.log('got here')
     console.log(JSON.parse(storedPreferences));
     window.userPreferences = JSON.parse(storedPreferences);
   }
@@ -644,8 +651,7 @@ function searchButtonClick() {
 }
 
 function helpButtonClick() {
-  window.location.href = "./help.html";
-  // console.log('TODO: HELP PAGE')
+  window.location = "./help.html";
 }
 
 
@@ -718,7 +724,6 @@ var frames = {
         elements.forEach( pair => {
           var rect1 = getElementPosition(pair.element);
           if (!isOverlap(rect1, cursorRect) || !isOverlap(cursorRect, rect1)) {
-            console.log('got here')
             pair.element.classList.add('hovering');
             cursor.src ="img/mouse-over-cursor.png";
             pair.counter += 1;
@@ -741,8 +746,21 @@ var frames = {
   },
 
   show: function(frame) {
+
     if (frame.people.length < 1) {
       return null;
+    }
+    
+    if (window.location.pathname.includes('/index.html')) {
+      frame.people.forEach( person => {
+        var headY = person.joints[26].position.y;
+        var rightHandY = person.joints[15].position.y;
+        if (rightHandY < headY) {
+          globalPersonID = person.body_id;
+          localStorage.setItem('personID', globalPersonID);
+          startButtonClick();
+        }
+      });
     }
 
     // Adjust these offset values to position the cursor correctly on your screen
@@ -754,8 +772,15 @@ var frames = {
     var screenWidth = window.innerWidth;
     var screenHeight = window.innerHeight;
 
-    var right_hand_x = (frame.people[0].joints[15].position.x * -2) + offsetX;
-    var right_hand_y = frame.people[0].joints[15].position.y + offsetY;
+    var personAppearsIndex = 0;
+    frame.people.forEach( function(person, i) {
+      if (person.body_id.toString() == localStorage.getItem('personID')) {
+        index = i;
+      }
+    });
+
+    var right_hand_x = (frame.people[personAppearsIndex].joints[15].position.x * -2) + offsetX;
+    var right_hand_y = frame.people[personAppearsIndex].joints[15].position.y + offsetY;
 
     // Constrain the cursor to stay within the screen bounds
     right_hand_x = Math.max(0, Math.min(right_hand_x, screenWidth - correctionFactorX));
