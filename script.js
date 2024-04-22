@@ -353,9 +353,31 @@ function displayRecommendation(spots, index) {
   } else {
 
     goLeftButton.addEventListener('click', function(event) {
-      displayRecommendation(spots, index-1);
+      displayRecommendation(spots, index-1); 
+      var blah = 0;
+      elements.forEach( function(pair, i) {
+        if (pair.element == goLeftButton) {
+          blah = i;
+        }
+      });
+      elements[blah].counter = 0;
     });
-    elements.push({element:goLeftButton, counter:0});
+
+    var alreadyMade = false;
+    var alreadyMadeIndex = 0;
+    elements.forEach( function(pair, i) {
+      if (pair.element == goLeftButton) {
+        alreadyMade = true;
+        alreadyMadeIndex = i;
+      }
+    });
+    if (alreadyMade) {
+      console.log("Got here")
+      elements[alreadyMadeIndex].counter = 0;
+    } else {
+      elements.push({element:goLeftButton, counter:0});
+    }
+
     goLeftButton.style.display="block";
   }
   if (index == spots.length - 1) {
@@ -364,9 +386,30 @@ function displayRecommendation(spots, index) {
 
     goRightButton.addEventListener('click', function(event) {
       displayRecommendation(spots, index+1);
+      var blah = 0;
+      elements.forEach( function(pair, i) {
+        if (pair.element == goRightButton) {
+          blah = i;
+        }
+      });
+      elements[blah].counter = 0;
     });
+    var alreadyMadeRight = false;
+    var alreadyMadeIndexRight = 0;
+    elements.forEach( function(pair, i) {
+      if (pair.element == goRightButton) {
+        alreadyMadeRight = true;
+        alreadyMadeIndexRight = i;
+      }
+    });
+    if (alreadyMadeRight) {
+      elements[alreadyMadeIndexRight].counter = 0;
+    } else {
+      elements.push({element:goRightButton, counter:0});
+    }
     elements.push({element:goRightButton, counter:0});
     goRightButton.style.display="block";
+
   }
 
 }
