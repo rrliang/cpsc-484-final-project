@@ -8,7 +8,6 @@ $(document).ready(function() {
   frames.start();
 });
 
-
 const studySpots = [
   {
       location: 'AKW',
@@ -18,7 +17,8 @@ const studySpots = [
       type: 'STEM',
       description: 'At the AKW, you can find study spaces on the second and third floor.',
       gpsLink: 'https://maps.app.goo.gl/QuoYxYTTSKDZkV2d9',
-      image: 'study_images/AKW.jpg'
+      image: 'study_images/AKW.jpg',
+      qr: 'qr_codes/AKW.png'
   },
   {
       location: 'Sterling Library',
@@ -28,7 +28,8 @@ const studySpots = [
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/2FFbyn19ZPCYqqm28',
-      image: 'study_images/Sterling.jpg'
+      image: 'study_images/Sterling.jpg',
+      qr: 'qr_codes/Sterling.png'
   },
   {
       location: 'Med School Library',
@@ -38,7 +39,8 @@ const studySpots = [
       type: 'STEM',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/Tptd4BpT4BqKE9xF9',
-      image: 'study_images/Med_School.jpg'
+      image: 'study_images/Med_School.jpg',
+      qr: 'qr_codes/MedSchool.png'
   },
   {
       location: 'Yale School of Management',
@@ -48,7 +50,8 @@ const studySpots = [
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/zGB6V1eL9Yvjbzx59',
-      image: 'study_images/SOM.jpg'
+      image: 'study_images/SOM.jpg',
+      qr: 'qr_codes/SOM.png'
   },
   {
       location: 'Pierson Library',
@@ -58,7 +61,8 @@ const studySpots = [
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/9VwWyzQD6hMg5gUKA',
-      image: 'study_images/Pierson.jpg'
+      image: 'study_images/Pierson.jpg',
+      qr: 'qr_codes/Pierson.png'
   },
   {
       location: 'CEID',
@@ -68,7 +72,8 @@ const studySpots = [
       type: 'STEM',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/yDErt74DSHTmasUW8',
-      image: 'study_images/CEID.jpg'
+      image: 'study_images/CEID.jpg',
+      qr: 'qr_codes/CEID.png'
   },
   {
       location: 'Cross Campus',
@@ -77,8 +82,9 @@ const studySpots = [
       quietNoise: 'Noise',
       type: 'Both',
       description: '',
-      gpsLink: 'https://maps.app.goo.gl/JVriypGNb6D3pgb87',
-      image: 'study_images/CrossCampus.jpg'
+      gpsLink: 'https://maps.app.goo.gl/roooEC7NTGSjvqAg6',
+      image: 'study_images/CrossCampus.jpg',
+      qr: 'qr_codes/CrossCampus.png'
   },
   {
       location: 'Atticus Coffee',
@@ -88,7 +94,8 @@ const studySpots = [
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/b2GsN9RWoEGtNEWP9',
-      image: 'study_images/Atticus.jpg'
+      image: 'study_images/Atticus.jpg',
+      qr: 'qr_codes/Atticus.png'
   },
   {
       location: 'Yale Art Gallery',
@@ -98,7 +105,8 @@ const studySpots = [
       type: 'Humanities',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/zM2gofzvwGxkXLM77',
-      image: 'study_images/YUAG.jpg'
+      image: 'study_images/YUAG.jpg',
+      qr: 'qr_codes/YUAG.png'
   },
   {
       location: 'Classics Library',
@@ -108,7 +116,8 @@ const studySpots = [
       type: 'Humanities',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/9vRDQudXvtmqwCKT8',
-      image: 'study_images/Classics.jpg'
+      image: 'study_images/Classics.jpg',
+      qr: 'qr_codes/Classics.png'
   },
   {
       location: 'Bass Library',
@@ -117,8 +126,9 @@ const studySpots = [
       quietNoise: 'Quiet',
       type: 'Both',
       description: '',
-      gpsLink: 'https://maps.app.goo.gl/b2GsN9RWoEGtNEWP9',
-      image: 'study_images/Bass.jpg'
+      gpsLink: 'https://maps.app.goo.gl/U8AFXByagkTyqMKB9',
+      image: 'study_images/Bass.jpg',
+      qr: 'qr_codes/Bass.png'
   },
   {
       location: 'Marx Library',
@@ -128,7 +138,8 @@ const studySpots = [
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/mH2q4y1bLDkU4dLh7',
-      image: 'study_images/Marx.jpg'
+      image: 'study_images/Marx.jpg',
+      qr: 'qr_codes/Marx.png'
   },
   {
       location: 'Trumbull Buttery',
@@ -138,17 +149,19 @@ const studySpots = [
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/9AdZYWyydudApLkQA',
-      image: 'study_images/TrumbullButtery.jpg'
+      image: 'study_images/TrumbullButtery.jpg',
+      qr: 'qr_codes/Trumbull.png'
   },
   {
-      location: 'Donut Krazy',
+      location: 'Donut Crazy',
       distance: '> 10',
       inOutdoor: 'Indoor',
       quietNoise: 'Noise',
       type: 'Both',
       description: '',
-      gpsLink: 'https://maps.app.goo.gl/A85N4dAuYxLJwgMx6',
-      image: 'study_images/DonutKrazy.jpg'
+      gpsLink: 'https://maps.app.goo.gl/cdCJzqajq33K5hTj9',
+      image: 'study_images/DonutKrazy.jpg',
+      qr: 'qr_codes/DonutCrazy.png'
   },
   {
       location: 'Pauli Murray Common Room',
@@ -158,7 +171,8 @@ const studySpots = [
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/g65baWzHhob1VLWNA',
-      image: 'study_images/PauliMurray.jpg'
+      image: 'study_images/PauliMurray.jpg',
+      qr: 'qr_codes/Pauli.png'
   },
   {
       location: 'Benches by Ingalls Rink',
@@ -168,7 +182,8 @@ const studySpots = [
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/T9nxU6v3AZnPsuy56',
-      image: 'study_images/Ingalls.jpg'
+      image: 'study_images/Ingalls.jpg',
+      qr: 'qr_codes/Ingalls.png'
   },
   {
       location: 'Good Life Center',
@@ -178,7 +193,8 @@ const studySpots = [
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/oPHtkqxR1cdu1JTg7',
-      image: 'study_images/GoodLifeCenter.jpg'
+      image: 'study_images/GoodLifeCenter.jpg',
+      qr: 'qr_codes/GoodLife.png'
   },
   {
       location: 'Beinecke Plaza',
@@ -188,7 +204,8 @@ const studySpots = [
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/4vxXhNnySkvPYWFW9',
-      image: 'study_images/BeineckePlaza.jpg'
+      image: 'study_images/BeineckePlaza.jpg',
+      qr: 'qr_codes/BeineckePlaza.png'
   },
   {
       location: 'Old Campus Courtyard',
@@ -198,7 +215,8 @@ const studySpots = [
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/iigZseK36HTpgCxWA',
-      image: 'study_images/OldCampus.jpg'
+      image: 'study_images/OldCampus.jpg',
+      qr: 'qr_codes/OldCampus.png'
   },
   {
       location: 'William L. Harkness Hall',
@@ -208,7 +226,8 @@ const studySpots = [
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/puctpKikT7j9YfbcA',
-      image: 'study_images/WLH.jpg'
+      image: 'study_images/WLH.jpg',
+      qr: 'qr_codes/WLH.png'
   },
   {
       location: 'Humanities Quadrangle',
@@ -218,7 +237,8 @@ const studySpots = [
       type: 'Humanities',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/m6Rok2PeNLScWt5n9',
-      image: 'study_images/hq.jpg'
+      image: 'study_images/hq.jpg',
+      qr: 'qr_codes/HQ.png'
   },
   {
       location: 'Davenport Courtyard',
@@ -228,7 +248,8 @@ const studySpots = [
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/C7q6o6WqZHNyy5Qb6',
-      image: 'study_images/Davenport.jpg'
+      image: 'study_images/Davenport.jpg',
+      qr: 'qr_codes/Davenport.png'
   },
   {
       location: 'Loose Leaf Cafe',
@@ -238,7 +259,8 @@ const studySpots = [
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/YPNB7kg2NTua4Wdg6',
-      image: 'study_images/LooseLeaf.jpg'
+      image: 'study_images/LooseLeaf.jpg',
+      qr: 'qr_codes/LooseLeaf.png'
   },
   {
       location: 'Willoughbys',
@@ -248,7 +270,8 @@ const studySpots = [
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/Ek3Fzr7TJx9kRzj79',
-      image: 'study_images/Willoughby.jpg'
+      image: 'study_images/Willoughby.jpg',
+      qr: 'qr_codes/Willoughby.png'
   },
   {
       location: 'The Whale Tea',
@@ -258,7 +281,8 @@ const studySpots = [
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/UtShmj1tFZDuta249',
-      image: 'study_images/whaletea.jpg'
+      image: 'study_images/whaletea.jpg',
+      qr: 'qr_codes/WhaleTea.png'
   },
   {
       location: 'Law Library',
@@ -268,7 +292,8 @@ const studySpots = [
       type: 'Humanities',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/yoxPDbfgwc32wPQz7',
-      image: 'study_images/LawLibrary.jpg'
+      image: 'study_images/LawLibrary.jpg',
+      qr: 'qr_codes/Law.png'
   },
   {
       location: 'Haas Library',
@@ -278,7 +303,8 @@ const studySpots = [
       type: 'Humanities',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/8ZgawCREGWcMm39n9',
-      image: 'study_images/HaasLibrary.jpg'
+      image: 'study_images/HaasLibrary.jpg',
+      qr: 'qr_codes/Haas.png'
   },
   {
       location: 'School of Architecture Library',
@@ -288,7 +314,8 @@ const studySpots = [
       type: 'Humanities',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/k1SgNW2tDU4abbih8',
-      image: 'study_images/SchoolofArchitecture.jpg'
+      image: 'study_images/SchoolofArchitecture.jpg',
+      qr: 'qr_codes/Architecture.png'
   },
   {
       location: 'Rosenfeld Hall',
@@ -298,10 +325,11 @@ const studySpots = [
       type: 'Both',
       description: '',
       gpsLink: 'https://maps.app.goo.gl/k1SgNW2tDU4abbih8',
-      image: 'study_images/RosenfeldHall.jpg'
+      image: 'study_images/RosenfeldHall.jpg',
+      qr: 'qr_codes/Rosenfeld.png'
   }
  ];
-
+ 
 function filterStudySpots(preferences) {
   return studySpots.filter(spot => {
       return (preferences.distance === spot.distance || preferences.distance === 'Both') &&
