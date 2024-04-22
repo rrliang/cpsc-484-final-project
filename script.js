@@ -737,17 +737,12 @@ function getElementPosition(el) {
 
 // This function will return true if the given elements overlap
 function isOverlap(rect1, rect2) {
-  var isOverlap = false;
-
-  if (
-    rect2.top < rect1.top ||
-    rect2.right > rect1.right ||
-    rect2.bottom > rect1.bottom ||
-    rect2.left < rect1.left) {
-
-    isOverlap = true;
-  }
-  return isOverlap;
+  return (
+    rect1.left < rect2.right &&
+    rect1.right > rect2.left &&
+    rect1.top < rect2.bottom &&
+    rect1.bottom > rect2.top
+  );
 }
 
 
@@ -795,7 +790,7 @@ var frames = {
         // Interact with the object, by clicking it
         elements.forEach( pair => {
           var rect1 = getElementPosition(pair.element);
-          if (!isOverlap(rect1, cursorRect) || !isOverlap(cursorRect, rect1)) {
+          if (isOverlap(rect1, cursorRect) || isOverlap(cursorRect, rect1)) {
             pair.element.classList.add('hovering');
             cursor.src ="img/mouse-over-cursor.png";
             pair.counter += 1;
