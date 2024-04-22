@@ -339,10 +339,32 @@ function filterStudySpots(preferences) {
   });
 }
 
+function resetCounter(button) {
+  var blah = 0;
+  elements.forEach(function(pair, i) {
+    if (pair.element == button) {
+      blah = i;
+    }
+  });
+  elements[blah].counter = 0;
+}
+
+function handleLeftButtonClick(spots, index) {
+  displayRecommendation(spots, index - 1);
+  resetCounter(goLeftButton);
+}
+
+function handleRightButtonClick(spots, index) {
+  displayRecommendation(spots, index + 1);
+  resetCounter(goRightButton);
+}
+
 function displayRecommendation(spots, index) {
 
   document.getElementById('study-spot-image').src = spots[index].image;
   document.getElementById('study-spot-name').innerText = spots[index].location;
+  document.getElementById('study-spot-description').innerText = spots[index].description;
+  document.getElementById('study-spot-directions').src = spots[index].qr;
 
   document.getElementById('no-spots').innerText = index+1 + " out of " + spots.length;
 
@@ -352,15 +374,9 @@ function displayRecommendation(spots, index) {
     goLeftButton.style.display="none";
   } else {
 
+    goLeftButton.removeEventListener('click', handleLeftButtonClick);
     goLeftButton.addEventListener('click', function(event) {
-      displayRecommendation(spots, index-1); 
-      var blah = 0;
-      elements.forEach( function(pair, i) {
-        if (pair.element == goLeftButton) {
-          blah = i;
-        }
-      });
-      elements[blah].counter = 0;
+      handleLeftButtonClick(spots, index)
     });
 
     var alreadyMade = false;
@@ -372,7 +388,7 @@ function displayRecommendation(spots, index) {
       }
     });
     if (alreadyMade) {
-      console.log("Got here")
+      // console.log("Got here")
       elements[alreadyMadeIndex].counter = 0;
     } else {
       elements.push({element:goLeftButton, counter:0});
@@ -385,14 +401,7 @@ function displayRecommendation(spots, index) {
   } else {
 
     goRightButton.addEventListener('click', function(event) {
-      displayRecommendation(spots, index+1);
-      var blah = 0;
-      elements.forEach( function(pair, i) {
-        if (pair.element == goRightButton) {
-          blah = i;
-        }
-      });
-      elements[blah].counter = 0;
+      handleRightButtonClick(spots, index);
     });
     var alreadyMadeRight = false;
     var alreadyMadeIndexRight = 0;
