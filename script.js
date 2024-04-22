@@ -26,7 +26,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Quiet',
       type: 'Both',
-      description: '',
+      description: 'There are many spaces for you to study at Sterling Library, from the stacks to L&B reading room.',
       gpsLink: 'https://maps.app.goo.gl/2FFbyn19ZPCYqqm28',
       image: 'study_images/Sterling.jpg',
       qr: 'qr_codes/Sterling.png'
@@ -37,7 +37,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Quiet',
       type: 'STEM',
-      description: '',
+      description: 'The Med School Library provides a quiet, resource-rich environment tailored for medical students and those studying life sciences.',
       gpsLink: 'https://maps.app.goo.gl/Tptd4BpT4BqKE9xF9',
       image: 'study_images/Med_School.jpg',
       qr: 'qr_codes/MedSchool.png'
@@ -48,7 +48,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Both',
       type: 'Both',
-      description: '',
+      description: 'SOM offers modern study spaces that cater to both quiet study and group discussions, set in a contemporary setting.',
       gpsLink: 'https://maps.app.goo.gl/zGB6V1eL9Yvjbzx59',
       image: 'study_images/SOM.jpg',
       qr: 'qr_codes/SOM.png'
@@ -59,7 +59,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Quiet',
       type: 'Both',
-      description: '',
+      description: 'Pierson Library provides a tranquil environment with its classic decor and quiet study areas, perfect for deep focus.',
       gpsLink: 'https://maps.app.goo.gl/9VwWyzQD6hMg5gUKA',
       image: 'study_images/Pierson.jpg',
       qr: 'qr_codes/Pierson.png'
@@ -70,7 +70,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Both',
       type: 'STEM',
-      description: '',
+      description: 'The Center for Engineering Innovation & Design (CEID) supports creative and collaborative projects with its versatile workspaces and tech resources.',
       gpsLink: 'https://maps.app.goo.gl/yDErt74DSHTmasUW8',
       image: 'study_images/CEID.jpg',
       qr: 'qr_codes/CEID.png'
@@ -81,7 +81,7 @@ const studySpots = [
       inOutdoor: 'Outdoor',
       quietNoise: 'Noise',
       type: 'Both',
-      description: '',
+      description: 'Cross Campus is an energetic, open space perfect for those who enjoy studying outdoors with the vibrant background noise of campus life.',
       gpsLink: 'https://maps.app.goo.gl/roooEC7NTGSjvqAg6',
       image: 'study_images/CrossCampus.jpg',
       qr: 'qr_codes/CrossCampus.png'
@@ -92,7 +92,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Both',
       type: 'Both',
-      description: '',
+      description: 'Atticus Coffee offers a cozy, book-lined space that combines the aroma of coffee with a comfortable, mildly bustling atmosphere.',
       gpsLink: 'https://maps.app.goo.gl/b2GsN9RWoEGtNEWP9',
       image: 'study_images/Atticus.jpg',
       qr: 'qr_codes/Atticus.png'
@@ -103,7 +103,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Quiet',
       type: 'Humanities',
-      description: '',
+      description: 'The YUAG provides a contemplative environment surrounded by inspiring artworks, ideal for humanities students or those seeking creative inspiration.',
       gpsLink: 'https://maps.app.goo.gl/zM2gofzvwGxkXLM77',
       image: 'study_images/YUAG.jpg',
       qr: 'qr_codes/YUAG.png'
@@ -114,7 +114,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Quiet',
       type: 'Humanities',
-      description: '',
+      description: 'Above Phelps Gate, the Classics Library is a haven for scholars, offering a serene study environment amidst ancient texts.',
       gpsLink: 'https://maps.app.goo.gl/9vRDQudXvtmqwCKT8',
       image: 'study_images/Classics.jpg',
       qr: 'qr_codes/Classics.png'
@@ -125,7 +125,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Quiet',
       type: 'Both',
-      description: '',
+      description: 'Bass Library offers a centrally-located study space with comfortable seating and a quiet atmosphere, perfect for long study sessions.',
       gpsLink: 'https://maps.app.goo.gl/U8AFXByagkTyqMKB9',
       image: 'study_images/Bass.jpg',
       qr: 'qr_codes/Bass.png'
@@ -136,7 +136,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Quiet',
       type: 'Both',
-      description: '',
+      description: 'Located up science hill, Marx Library provides a quiet, focused environment suitable for students from all disciplines.',
       gpsLink: 'https://maps.app.goo.gl/mH2q4y1bLDkU4dLh7',
       image: 'study_images/Marx.jpg',
       qr: 'qr_codes/Marx.png'
@@ -147,7 +147,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Noise',
       type: 'Both',
-      description: '',
+      description: 'Trumbull Buttery is known for its relaxed, café-style atmosphere, making it a favorite for students who prefer a lively background noise while studying.',
       gpsLink: 'https://maps.app.goo.gl/9AdZYWyydudApLkQA',
       image: 'study_images/TrumbullButtery.jpg',
       qr: 'qr_codes/Trumbull.png'
@@ -158,7 +158,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Noise',
       type: 'Both',
-      description: '',
+      description: 'Donut Krazy combines delicious treats with a casual study atmosphere, ideal for group meetings or when you need a sugar boost while studying.',
       gpsLink: 'https://maps.app.goo.gl/cdCJzqajq33K5hTj9',
       image: 'study_images/DonutKrazy.jpg',
       qr: 'qr_codes/DonutCrazy.png'
@@ -169,7 +169,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Noise',
       type: 'Both',
-      description: '',
+      description: 'The Pauli Murray Common Room offers a vibrant community space that encourages both academic and social interactions among students.',
       gpsLink: 'https://maps.app.goo.gl/g65baWzHhob1VLWNA',
       image: 'study_images/PauliMurray.jpg',
       qr: 'qr_codes/Pauli.png'
@@ -180,7 +180,7 @@ const studySpots = [
       inOutdoor: 'Outdoor',
       quietNoise: 'Quiet',
       type: 'Both',
-      description: '',
+      description: 'The benches by Ingalls Rink provide a peaceful outdoor setting at the bottom of science hill, perfect for reading or quiet reflection.',
       gpsLink: 'https://maps.app.goo.gl/T9nxU6v3AZnPsuy56',
       image: 'study_images/Ingalls.jpg',
       qr: 'qr_codes/Ingalls.png'
@@ -191,7 +191,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Quiet',
       type: 'Both',
-      description: '',
+      description: 'The Good Life Center is designed for wellness and relaxation, offering a calm environment that promotes stress-free studying.',
       gpsLink: 'https://maps.app.goo.gl/oPHtkqxR1cdu1JTg7',
       image: 'study_images/GoodLifeCenter.jpg',
       qr: 'qr_codes/GoodLife.png'
@@ -202,7 +202,7 @@ const studySpots = [
       inOutdoor: 'Outdoor',
       quietNoise: 'Noise',
       type: 'Both',
-      description: '',
+      description: 'Beinecke Plaza is an iconic outdoor space, surrounded by unique architectural marvels, suitable for those who enjoy studying in a dynamic environment.',
       gpsLink: 'https://maps.app.goo.gl/4vxXhNnySkvPYWFW9',
       image: 'study_images/BeineckePlaza.jpg',
       qr: 'qr_codes/BeineckePlaza.png'
@@ -213,7 +213,7 @@ const studySpots = [
       inOutdoor: 'Outdoor',
       quietNoise: 'Noise',
       type: 'Both',
-      description: '',
+      description: 'Old Campus Courtyard is at the heart of Yale, a traditional spot for students to gather, study, or unwind between classes.',
       gpsLink: 'https://maps.app.goo.gl/iigZseK36HTpgCxWA',
       image: 'study_images/OldCampus.jpg',
       qr: 'qr_codes/OldCampus.png'
@@ -224,7 +224,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Both',
       type: 'Both',
-      description: '',
+      description: 'WLH offers versatile classroom spaces that transform into quiet study areas after hours, suitable for individual or group study.',
       gpsLink: 'https://maps.app.goo.gl/puctpKikT7j9YfbcA',
       image: 'study_images/WLH.jpg',
       qr: 'qr_codes/WLH.png'
@@ -235,7 +235,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Quiet',
       type: 'Humanities',
-      description: '',
+      description: 'HQ is a newly renovated space offering a serene environment focused on humanities studies, with quiet corners perfect for scholars.',
       gpsLink: 'https://maps.app.goo.gl/m6Rok2PeNLScWt5n9',
       image: 'study_images/hq.jpg',
       qr: 'qr_codes/HQ.png'
@@ -246,7 +246,7 @@ const studySpots = [
       inOutdoor: 'Outdoor',
       quietNoise: 'Both',
       type: 'Both',
-      description: '',
+      description: 'Davenport Courtyard is a picturesque outdoor area ideal for studying in the open air, offering a blend of quiet spots and social spaces.',
       gpsLink: 'https://maps.app.goo.gl/C7q6o6WqZHNyy5Qb6',
       image: 'study_images/Davenport.jpg',
       qr: 'qr_codes/Davenport.png'
@@ -257,7 +257,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Noise',
       type: 'Both',
-      description: '',
+      description: 'Loose Leaf Cafe is perfect for those who prefer a bustling café vibe, offering great coffee and a lively atmosphere for studying or collaborative projects.',
       gpsLink: 'https://maps.app.goo.gl/YPNB7kg2NTua4Wdg6',
       image: 'study_images/LooseLeaf.jpg',
       qr: 'qr_codes/LooseLeaf.png'
@@ -268,7 +268,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Noise',
       type: 'Both',
-      description: '',
+      description: 'Willoughbys provides a classic coffee shop experience with its strong brews and bustling environment, ideal for those who thrive in active settings.',
       gpsLink: 'https://maps.app.goo.gl/Ek3Fzr7TJx9kRzj79',
       image: 'study_images/Willoughby.jpg',
       qr: 'qr_codes/Willoughby.png'
@@ -279,7 +279,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Noise',
       type: 'Both',
-      description: '',
+      description: 'The Whale Tea offers a trendy spot for bubble tea lovers to sip and study, with a lively atmosphere that is great for group study sessions.',
       gpsLink: 'https://maps.app.goo.gl/UtShmj1tFZDuta249',
       image: 'study_images/whaletea.jpg',
       qr: 'qr_codes/WhaleTea.png'
@@ -290,7 +290,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Quiet',
       type: 'Humanities',
-      description: '',
+      description: 'The Law Library is a prestigious and solemn place for deep academic work, renowned for its extensive legal collections and stately ambiance.',
       gpsLink: 'https://maps.app.goo.gl/yoxPDbfgwc32wPQz7',
       image: 'study_images/LawLibrary.jpg',
       qr: 'qr_codes/Law.png'
@@ -301,7 +301,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Quiet',
       type: 'Humanities',
-      description: '',
+      description: 'Haas Library stands out with its focus on arts and humanities, offering a quiet retreat for students immersed in cultural studies and artistic exploration.',
       gpsLink: 'https://maps.app.goo.gl/8ZgawCREGWcMm39n9',
       image: 'study_images/HaasLibrary.jpg',
       qr: 'qr_codes/Haas.png'
@@ -312,7 +312,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Quiet',
       type: 'Humanities',
-      description: '',
+      description: 'The School of Architecture Library caters to design students, featuring a wide range of architectural resources in a quiet, inspiring environment.',
       gpsLink: 'https://maps.app.goo.gl/k1SgNW2tDU4abbih8',
       image: 'study_images/SchoolofArchitecture.jpg',
       qr: 'qr_codes/Architecture.png'
@@ -323,7 +323,7 @@ const studySpots = [
       inOutdoor: 'Indoor',
       quietNoise: 'Quiet',
       type: 'Both',
-      description: '',
+      description: 'Rosenfeld Hall is a hidden gem on campus offering a peaceful study environment with spacious rooms that are perfect for students seeking a quiet and secluded place to focus.',
       gpsLink: 'https://maps.app.goo.gl/k1SgNW2tDU4abbih8',
       image: 'study_images/RosenfeldHall.jpg',
       qr: 'qr_codes/Rosenfeld.png'
