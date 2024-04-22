@@ -352,6 +352,7 @@ var elements = [];
 
 if (window.location.pathname.includes('/index.html')) {
   var startButton = document.getElementById('start-button');
+  startButton.style.display = "none";
   startButton.addEventListener('click', startButtonClick);
   elements.push({element:startButton, counter:0});
 }
@@ -705,7 +706,7 @@ var frames = {
 
     frames.socket.onmessage = function(event) {
       var command = frames.show(JSON.parse(event.data));
-      if (command !== null) {
+      if (command !== null && !window.location.pathname.includes('/index.html')) {
         var cursor = document.getElementById('cursor');
         cursor.style.position = "absolute";
         cursor.style.left = (command[0] - 5) + 'px';
@@ -734,8 +735,8 @@ var frames = {
           }
           if (pair.counter > 16) {
             // alert('2 sec');
-            pair.element.click();
             pair.counter = 0;
+            pair.element.click();
           }
         });
 
@@ -750,6 +751,8 @@ var frames = {
     if (frame.people.length < 1) {
       return null;
     }
+
+
     
     if (window.location.pathname.includes('/index.html')) {
       frame.people.forEach( person => {
@@ -758,48 +761,64 @@ var frames = {
         if (rightHandY < headY) {
           globalPersonID = person.body_id;
           localStorage.setItem('personID', globalPersonID);
+          console.log("personid: ", localStorage.getItem('personID'))
           startButtonClick();
         }
       });
+    } else {
+          // Adjust these offset values to position the cursor correctly on your screen
+        var offsetX = 200;
+        var offsetY = 200;
+        var correctionFactorX = 25;
+        var correctionFactorY = 35;
+
+        var screenWidth = window.innerWidth;
+        var screenHeight = window.innerHeight;
+
+        // var personAppearsIndex = 0;
+        var personAppearsIndex = frame.people.map(function(x) {return x.body_id.toString(); }).indexOf(localStorage.getItem('personID'))
+        if (personAppearsIndex < 0) {
+          personAppearsIndex = 0; 
+        }
+        // console.log(personAppearsIndex)
+        // frame.people.forEach( function(person, i) {
+        //   if (person.body_id == localStorage.getItem('personID')) {
+        //     // console.log("got here")
+        //     personAppearsIndex = i;
+        //   } else {
+        //     console.log("COULDN'T FIND OG PERSON?")
+        //   }
+        // });
+
+        
+        // if (frame.people.length > 1) {
+        //   // console.log("got here! Index: ", personAppearsIndex)
+        // }
+
+        var right_hand_x = (frame.people[personAppearsIndex].joints[15].position.x * -2) + offsetX;
+        var right_hand_y = frame.people[personAppearsIndex].joints[15].position.y + offsetY;
+
+        // Constrain the cursor to stay within the screen bounds
+        right_hand_x = Math.max(0, Math.min(right_hand_x, screenWidth - correctionFactorX));
+        right_hand_y = Math.max(0, Math.min(right_hand_y, screenHeight - correctionFactorY));
+
+        // Add the current position to the beginning of the previousPositions array
+        this.previousPositions.unshift([right_hand_x, right_hand_y]);
+        // Trim the array to the maximum number of positions
+        this.previousPositions = this.previousPositions.slice(0, this.maxPositions);
+
+        // Calculate the average position
+        var averagePosition = this.previousPositions.reduce(function(acc, pos) {
+          return [acc[0] + pos[0], acc[1] + pos[1]];
+        }, [0, 0]).map(function(sum) {
+          return sum / frames.previousPositions.length;
+        });
+
+        return averagePosition;
+      }
     }
 
-    // Adjust these offset values to position the cursor correctly on your screen
-    var offsetX = 200;
-    var offsetY = 200;
-    var correctionFactorX = 25;
-    var correctionFactorY = 35;
-
-    var screenWidth = window.innerWidth;
-    var screenHeight = window.innerHeight;
-
-    var personAppearsIndex = 0;
-    frame.people.forEach( function(person, i) {
-      if (person.body_id.toString() == localStorage.getItem('personID')) {
-        index = i;
-      }
-    });
-
-    var right_hand_x = (frame.people[personAppearsIndex].joints[15].position.x * -2) + offsetX;
-    var right_hand_y = frame.people[personAppearsIndex].joints[15].position.y + offsetY;
-
-    // Constrain the cursor to stay within the screen bounds
-    right_hand_x = Math.max(0, Math.min(right_hand_x, screenWidth - correctionFactorX));
-    right_hand_y = Math.max(0, Math.min(right_hand_y, screenHeight - correctionFactorY));
-
-    // Add the current position to the beginning of the previousPositions array
-    this.previousPositions.unshift([right_hand_x, right_hand_y]);
-    // Trim the array to the maximum number of positions
-    this.previousPositions = this.previousPositions.slice(0, this.maxPositions);
-
-    // Calculate the average position
-    var averagePosition = this.previousPositions.reduce(function(acc, pos) {
-      return [acc[0] + pos[0], acc[1] + pos[1]];
-    }, [0, 0]).map(function(sum) {
-      return sum / frames.previousPositions.length;
-    });
-
-    return averagePosition;
-  }
+    
 };
 
 
