@@ -81,23 +81,16 @@ h1, h2 {
 
 .help-button {
     position: absolute;
-    top: 3vh; /* 3% from the top of the viewport */
-    left: 3vh; /* 3% from the left of the viewport */
+    top: 20px;
+    left: 20px;
     background-color: #00356B;
     color: #FFFFFF;
     border: none;
-    padding: 2vh; /* Padding based on viewport height */
-    font-size: 4.5vh; /* Font size based on viewport height */
-    width: 10vh; /* Width based on viewport height to maintain aspect ratio */
-    height: 10vh; /* Height based on viewport height */
-    border-radius: 50%; /* Maintains a circular shape */
+    padding: 15px 20px; /* Increased padding */
+    font-size: 1.4em; /* Larger font size */
+    border-radius: 50%; /* Circular, adjust if needed */
     cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    z-index: 1000; /* Ensures the button is above other elements */
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Center the '?' inside the button */
-    left: 15%
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition for interaction */
 }
 
 .help-button:hover {
@@ -379,22 +372,15 @@ input:checked + .slider:before {
 .more-info-button {
     background-color: #00356B; /* Yale Blue background */
     color: white;
+    padding: 15px 30px;
     font-size: 1.2em;
     border-radius: 5px;
     margin: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    position: absolute; /* Position it absolutely to the container */
-    right: 10%; /* Distance from the right - adjust as necessary */
-    top: 50%; /* Align to the vertical center of the container */
-    transform: translate(-50%, -50%); /* Center the button */
-    display: block; /* Block display to fill the width and height */
-    width: 60px; /* Width of the button */
-    height: 60px; /* Height of the button */
-    line-height: 60px; /* Align the ">" character vertically */
-    text-align: center; /* Align the ">" character horizontally */
-    cursor: pointer; /* Cursor pointer to indicate button */
-    border: none; /* No border unless you want one */
-    padding: 0; /* Reset padding to 0 */
+    /* position: absolute; */
+    right: 10%; /* Adjust as necessary */
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .more-info-button:hover {
@@ -451,7 +437,7 @@ input:checked + .slider:before {
 .go-back-help {
     position: absolute;
     top: 20px;
-    /* left: 20px; Position it on the right for distinction */
+    left: 20px; /* Position it on the right for distinction */
     background-color: #00356B;
     color: #FFFFFF;
     border: none;
@@ -460,50 +446,9 @@ input:checked + .slider:before {
     border-radius: 50%; /* Maintain the circular shape */
     cursor: pointer;
     transition: transform 0.3s ease, background-color 0.3s ease; /* Consistent transition effects */
-    left: 15%
 }
 
 .go-back-help:hover {
     transform: scale(1.1); /* Slightly larger on hover */
     background-color: #002244; /* Darker on hover */
-}
-
-
-.start-over, .search, .go-back {
-    padding: 20px 35px; /* Increased padding to make buttons bigger */
-    font-size: 1.4em; /* Increased font size for larger text */
-    color: #00356B;
-    border: 2px solid #00356B;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    position: fixed;
-    bottom: 3vh; /* 3% from the bottom for better vertical positioning */
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    z-index: 1000; /* Ensures the button is above other elements */
-}
-
-.start-over:hover, .search:hover, .go-back:hover {
-    background-color: #00356B;
-    color: #FFFFFF;
-    transform: scale(1.1);
-}
-
-.start-over {
-    left: 15%; /* Moved towards the center */
-}
-
-.search {
-    right: 15%; /* Moved towards the center */
-}
-
-.go-back {
-    right: 15%; /* Align with the search button on the opposite side */
-}
-
-@media (max-width: 768px) {
-    .start-over, .search, .go-back {
-        width: auto;
-        padding: 10px 15px; /* Adjusted padding for smaller screens */
-        font-size: 1.1em; /* Adjusted font size for smaller screens */
-    }
 }
