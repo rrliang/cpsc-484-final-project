@@ -39,7 +39,7 @@ const studySpots = [
       type: 'STEM',
       description: 'The Med School Library provides a quiet, resource-rich environment tailored for medical students and those studying life sciences.',
       gpsLink: 'https://maps.app.goo.gl/Tptd4BpT4BqKE9xF9',
-      image: 'study_images/Med_School.jpg',
+      image: 'study_images/med_school.jpg',
       qr: 'qr_codes/MedSchool.png'
   },
   {
