@@ -349,78 +349,39 @@ function resetCounter(button) {
   elements[blah].counter = 0;
 }
 
-function handleLeftButtonClick(spots, index) {
-  displayRecommendation(spots, index - 1);
+function handleLeftButtonClick(spots) {
+  var index = parseInt(localStorage.getItem("recIndex"));
+  localStorage.setItem('recIndex', index-1);
+  displayRecommendation(spots);
   resetCounter(goLeftButton);
 }
 
-function handleRightButtonClick(spots, index) {
-  displayRecommendation(spots, index + 1);
+function handleRightButtonClick(spots) {
+  var index = parseInt(localStorage.getItem("recIndex"));
+  localStorage.setItem('recIndex', index+1);
+  displayRecommendation(spots);
   resetCounter(goRightButton);
 }
 
-function displayRecommendation(spots, index) {
-
+function displayRecommendation(spots) {
+  var index = parseInt(localStorage.getItem("recIndex"));
   document.getElementById('study-spot-image').src = spots[index].image;
   document.getElementById('study-spot-name').innerText = spots[index].location;
   document.getElementById('study-spot-description').innerText = spots[index].description;
   document.getElementById('study-spot-directions').src = spots[index].qr;
-
   document.getElementById('no-spots').innerText = index+1 + " out of " + spots.length;
-
   var goLeftButton = document.getElementById('go-left');
   var goRightButton = document.getElementById('go-right');
   if (index == 0) {
     goLeftButton.style.display="none";
   } else {
-
-    goLeftButton.removeEventListener('click', handleLeftButtonClick);
-    goLeftButton.addEventListener('click', function(event) {
-      handleLeftButtonClick(spots, index)
-    });
-
-    var alreadyMade = false;
-    var alreadyMadeIndex = 0;
-    elements.forEach( function(pair, i) {
-      if (pair.element == goLeftButton) {
-        alreadyMade = true;
-        alreadyMadeIndex = i;
-      }
-    });
-    if (alreadyMade) {
-      // console.log("Got here")
-      elements[alreadyMadeIndex].counter = 0;
-    } else {
-      elements.push({element:goLeftButton, counter:0});
-    }
-
     goLeftButton.style.display="block";
   }
   if (index == spots.length - 1) {
     goRightButton.style.display="none";
   } else {
-
-    goRightButton.addEventListener('click', function(event) {
-      handleRightButtonClick(spots, index);
-    });
-    var alreadyMadeRight = false;
-    var alreadyMadeIndexRight = 0;
-    elements.forEach( function(pair, i) {
-      if (pair.element == goRightButton) {
-        alreadyMadeRight = true;
-        alreadyMadeIndexRight = i;
-      }
-    });
-    if (alreadyMadeRight) {
-      elements[alreadyMadeIndexRight].counter = 0;
-    } else {
-      elements.push({element:goRightButton, counter:0});
-    }
-    elements.push({element:goRightButton, counter:0});
     goRightButton.style.display="block";
-
   }
-
 }
 
 
@@ -627,7 +588,7 @@ function displayStoredPreferences() {
 if (window.location.pathname.includes('/recommendation.html')) {
   const preferences = JSON.parse(localStorage.getItem('userPreferences'));
   filteredSpots = filterStudySpots(preferences);
-  console.log(filteredSpots)
+  localStorage.setItem('recIndex', 0);
   if (filteredSpots.length == 0) {
     console.log('NO STUDY SPACES FOUND');
     document.getElementById('recommendation-container').style.display="none";
@@ -639,7 +600,16 @@ if (window.location.pathname.includes('/recommendation.html')) {
 
   } else if (filteredSpots.length > 0) {
     document.getElementById('recommendation-container').style.display="block";
-    displayRecommendation(filteredSpots, 0);
+    var goLeftButton = document.getElementById('go-left');
+    var goRightButton = document.getElementById('go-right');
+    goLeftButton.addEventListener('click', function(event) {
+      handleLeftButtonClick(filteredSpots)
+    });
+    goRightButton.addEventListener('click', function(event) {
+      handleRightButtonClick(filteredSpots)
+    });
+    displayRecommendation(filteredSpots);
+
   }
   var startOverButton = document.getElementById('start-over-button');
   var helpButton = document.getElementById('help-button');
@@ -650,6 +620,7 @@ if (window.location.pathname.includes('/recommendation.html')) {
   elements.push({element:startOverButton, counter:0});
   elements.push({element:helpButton, counter:0});
   elements.push({element:goBackButton, counter:0});
+  
 }
 
 function indoorOptionClicked(event, options, type) {
