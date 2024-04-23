@@ -30,4 +30,4 @@ Student Name and NetID: Leila Nsangou lnn4
 Contribution:
 
 Student Name and NetID: Dylan Moss djm239
-Contribution: 
+Contribution: I helped input some data for the study sites, such as their descriptions. At the beginning of the project I set up the user hand tracking and bound the cursor to the screen as well as made sure movement was smoothed and generally useable. I also worked on some CSS and HTML to make the format of the app look better and also easier for the user to interact with, such as buttons showing loading progress. Also set up the local storage calls so we were able to store user preferences and loading the study spaces correctly and show them on the screen.
