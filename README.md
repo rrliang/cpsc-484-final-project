@@ -21,7 +21,7 @@ A constraint in the environment could be the fact that the Zoo (where our TV is 
 
 # Collaboration Record
 Student Name and NetID: Rachel Liang rrl44
-Contribution: 
+Contribution: I coded the skeletons for the cursor (on the TV screen) and the hovering affect on the cursor (if the cursor, tied to the user's right hand, hovers over a clickable element on the screen for more than 3 seconds, then click the button). I made this code OOP so it could be applied to all of the interactable elements for each html file. I also added and applied the cursor png and the waving hand gif on the first page. I did all of this by having an array called elements where interactable elements could be pushed into, each element containing a counter. When the cursor hovers over the element, the counter would go up for the element in the elements array, and when the counter went up to a certain number, the element would be clicked.
 
 Student Name and NetID: Noah Dee nad54
 Contribution: I collected data for all the study sites, which included preliminary research and sorting study spaces into "preferences". For instance, Sterling Library would be classified under indoors and quiet. I also attached an image and QR code for every single one of these spaces to support Task 2 that allows users to find the directions to it. Next, I worked on the main backend algorithm, which takes in a user's preferences and matches them to a specific study space. I did this by iterating through our data set of study spaces and finding the study spaces that matched the user's preferences.
