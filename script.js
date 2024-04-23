@@ -369,7 +369,7 @@ function displayRecommendation(spots) {
   document.getElementById('study-spot-name').innerText = spots[index].location;
   document.getElementById('study-spot-description').innerText = spots[index].description;
   document.getElementById('study-spot-directions').src = spots[index].qr;
-  document.getElementById('no-spots').innerText = index+1 + " out of " + spots.length;
+  document.getElementById('study-spot-number').innerText = index+1 + " out of " + spots.length;
   var goLeftButton = document.getElementById('go-left');
   var goRightButton = document.getElementById('go-right');
   if (index == 0) {
@@ -589,19 +589,26 @@ if (window.location.pathname.includes('/recommendation.html')) {
   const preferences = JSON.parse(localStorage.getItem('userPreferences'));
   filteredSpots = filterStudySpots(preferences);
   localStorage.setItem('recIndex', 0);
+
+  const recommendationContainer = document.getElementById('recommendation-container');
+  const noSpotsMessage = document.getElementById('no-spots');
+  const goLeftButton = document.getElementById('go-left');
+  const goRightButton = document.getElementById('go-right');
+
   if (filteredSpots.length == 0) {
     console.log('NO STUDY SPACES FOUND');
-    document.getElementById('recommendation-container').style.display="none";
-    document.getElementById('no-spots').style.display="block";
-    var goLeftButton = document.getElementById('go-left');
-    var goRightButton = document.getElementById('go-right');
-    goLeftButton.style.display="none";
-    goRightButton.style.display="none";
+    recommendationContainer.style.display = "none";
+    goLeftButton.style.display = "none";
+    goRightButton.style.display = "none";
+    noSpotsMessage.style.display = "flex";
+    noSpotsMessage.innerText = "Sorry, no study spaces found with your preferences. Try going back and adjusting your preferences for results!";
+    noSpotsMessage.style.display = "flex";
 
   } else if (filteredSpots.length > 0) {
-    document.getElementById('recommendation-container').style.display="block";
-    var goLeftButton = document.getElementById('go-left');
-    var goRightButton = document.getElementById('go-right');
+    recommendationContainer.style.display = "flex";
+    goLeftButton.style.display = "block";
+    goRightButton.style.display = "block";
+    noSpotsMessage.style.display = "none";
     goLeftButton.addEventListener('click', function(event) {
       handleLeftButtonClick(filteredSpots)
     });

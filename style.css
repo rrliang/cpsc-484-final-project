@@ -326,25 +326,52 @@ input:checked + .slider:before {
 /* ... existing styles ... */
 
 .recommendation-container {
-    /* Adjust the max-width if necessary to fit your screen */
-    max-width: 1000px;
-    padding: 20px;
-    margin: 2% auto;
+    width: 100%; /* Adjust width to your preference */
+    max-width: 800px; /* Maximum width */
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Center align all child elements horizontally */
+    text-align: center; /* Center align text for all child elements */
+    padding: 20px;
+    margin: auto; /* Auto margins for centering if not using flex on body */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: #FFF;
+    border-radius: 10px;
 }
 
 .spot-image-container {
-    border: 3px solid #00356B; /* Yale Blue border */
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
+    width: 100%; /* Full width to use the container's width */
+    height: auto; /* Maintain aspect ratio */
+    display: flex; /* Using flex to center image */
+    justify-content: center; /* Center horizontally */
+    align-items: center;
 }
 
 #study-spot-image {
-    max-width: 80%;
-    max-height: 500px; /* Adjust based on your layout needs */
+    max-width: 50%;
+    max-height: 200px; /* Restrict image to not overflow its container */
+    height: auto; /* Keep aspect ratio intact */
+    display: block; /* Change display to block to handle sizing correctly */
+    margin: auto; /* Auto margins for horizontal centering */
+}
+
+#study-spot-directions {
+    max-width: 25%; /* Restrict image to not overflow its container */
+    height: auto; /* Keep aspect ratio intact */
+    display: block; /* Change display to block to handle sizing correctly */
+    margin: auto;
+}
+
+#no-spots {
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+    display: flex; /* Enables flexbox properties for this container */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    text-align: center; /* Ensures text is centered if it wraps to a new line */
+    font-size: 1.5em; /* Larger text for visibility */
+    color: #00356B; /* Example color, adjust as needed */
 }
 
 /* Start Over and Go Back button styles */
