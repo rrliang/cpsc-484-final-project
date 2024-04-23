@@ -53,7 +53,7 @@ h1, h2 {
 .action-button, .start-over, .search, .option, .start {
     padding: 30px 45px;
     cursor: pointer;
-    font-size: 1.2em;
+    font-size: 2em;
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     color: #00356B;
@@ -450,11 +450,11 @@ h1, h2 {
 
 
 .start-over, .search, .go-back {
-    padding: 20px 35px; /* Increased padding to make buttons bigger */
-    font-size: 1.4em; /* Increased font size for larger text */
+    padding: 30px 50px; /* Increased padding to make buttons bigger */
+    font-size: 2em; /* Increased font size for larger text */
     color: #00356B;
     border: 2px solid #00356B;
-    border-radius: 5px;
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     position: fixed;
     bottom: 3vh; /* 3% from the bottom for better vertical positioning */
