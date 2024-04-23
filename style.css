@@ -315,7 +315,7 @@ h1, h2 {
 }
 
 /* Start Over and Go Back button styles */
-.start-over, .go-back {
+.start-over, .go-back, .search {
     background-color: #FFFFFF;
     color: #00356B;
     border: 2px solid #00356B;
