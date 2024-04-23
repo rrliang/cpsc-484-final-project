@@ -627,6 +627,8 @@ if (window.location.pathname.includes('/recommendation.html')) {
   elements.push({element:startOverButton, counter:0});
   elements.push({element:helpButton, counter:0});
   elements.push({element:goBackButton, counter:0});
+  elements.push({element:goLeftButton, counter:0});
+  elements.push({element:goRightButton, counter:0});
   
 }
 
