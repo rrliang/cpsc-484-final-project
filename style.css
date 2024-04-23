@@ -14,17 +14,16 @@ body, html {
 
 .container, .preferences-container {
     text-align: center;
-    padding: 1vw; /* This will be based on the width of the viewport */
-    max-width: 80vw; /* This will max out at 80% of the width of the viewport */
-    width: 80vw; /* You can also set a specific width relative to the viewport width */
-    height: auto; /* Or set to a percentage of viewport height if you need a specific height */
-    margin: 5vh auto; /* This gives a margin on the top and bottom based on the viewport height */
-    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1); /* Adjust shadow size based on viewport width */
-    border-radius: 1vw; /* This makes the border-radius responsive to the viewport width */
+    padding: 1vw;
+    max-width: 80vw; 
+    width: 80vw; 
+    height: auto; 
+    margin: 5vh auto; 
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1); 
+    border-radius: 1vw;
     background: #FFF;
 }
 
-/* Headings and Text */
 h1, h2 {
     color: #00356B;
     margin-bottom: 30px;
@@ -49,7 +48,6 @@ h1, h2 {
     font-weight: bold;
 }
 
-/* Buttons and Action Items */
 .action-button, .start-over, .search, .option, .start {
     padding: 30px 45px;
     cursor: pointer;
@@ -83,28 +81,28 @@ h1, h2 {
 
 .help-button {
     position: absolute;
-    top: 3vh; /* 3% from the top of the viewport */
-    left: 3vh; /* 3% from the left of the viewport */
+    top: 3vh; 
+    left: 3vh;
     background-color: #00356B;
     color: #FFFFFF;
     border: none;
-    padding: 2vh; /* Padding based on viewport height */
-    font-size: 4.5vh; /* Font size based on viewport height */
-    width: 10vh; /* Width based on viewport height to maintain aspect ratio */
-    height: 10vh; /* Height based on viewport height */
-    border-radius: 50%; /* Maintains a circular shape */
+    padding: 2vh; 
+    font-size: 4.5vh; 
+    width: 10vh; 
+    height: 10vh; 
+    border-radius: 50%; 
     cursor: pointer;
     transition: transform 0.3s ease, background-color 0.3s ease;
-    z-index: 1000; /* Ensures the button is above other elements */
+    z-index: 1000; 
     display: flex;
     align-items: center;
-    justify-content: center; /* Center the '?' inside the button */
+    justify-content: center;
     left: 15%
 }
 
 .help-button:hover {
-    transform: scale(1.1); /* Slightly larger on hover */
-    background-color: #002244; /* Darker on hover */
+    transform: scale(1.1); 
+    background-color: #002244; 
 }
 
 .options-group {
@@ -116,44 +114,33 @@ h1, h2 {
 }
 
 .options-group span {
-    flex: 1; /* Gives equal space to the text on either side of the slider */
+    flex: 1;
     text-align: center;
-    color: #00356B; /* Yale Blue */
+    color: #00356B; 
     font-weight: bold;
 }
 
-/* Position buttons at the bottom corners */
 .start-over, .search {
     position: fixed;
     bottom: 20px;
-    /* Ensuring they stay out of the flow of the white container */
 }
 
 .start-over {
     left: 20px;
-    /* Styles for the button */
 }
 
 .search {
     right: 20px;
-    /* Styles for the button */
 }
 
-/* Ensure the help button doesn't overlap with the fixed buttons */
-.help-button {
-    z-index: 1000; /* Ensures the button is above other elements */
-}
-
-/* Additional responsive positioning for mobile or smaller screens */
 @media (max-width: 768px) {
     .options-group {
         flex-direction: column;
     }
-
     .start-over, .search {
-        width: auto; /* Or specific size for smaller screens */
-        padding: 10px; /* Adjust as necessary */
-        font-size: smaller; /* Adjust as necessary */
+        width: auto; 
+        padding: 10px; 
+        font-size: smaller; 
     }
 }
 
@@ -174,7 +161,7 @@ h1, h2 {
     margin: 0;
 }
 
-/* Style the labels to look like toggle parts */
+/* style the labels to look like toggle parts */
 .tri-state-switch label {
     background-color: #ccc;
     padding: 10px 20px;
@@ -185,7 +172,7 @@ h1, h2 {
     transition: background-color 0.25s ease-out;
 }
 
-/* Highlight the selected option */
+/* highlight the selected option */
 .tri-state-switch input[type="radio"]:checked + label {
     background-color: #00356B;
     color: white;
@@ -209,18 +196,6 @@ h1, h2 {
 .left-option {
     border-radius: 15px 0 0 15px;
 }
-
-
-.right-option {
-    border-radius: 0 15px 15px 0;
-}
-
-
-/* Round the corners on the ends */
-.left-option {
-    border-radius: 15px 0 0 15px;
-}
-
 
 .right-option {
     border-radius: 0 15px 15px 0;
@@ -262,16 +237,14 @@ h1, h2 {
     }
 }
 
-/* Recommendation Page Styles */
-/* ... existing styles ... */
 
 .recommendation-container {
-    width: 100%; /* Adjust width to your preference */
-    max-width: 800px; /* Maximum width */
+    width: 100%; 
+    max-width: 800px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center align all child elements horizontally */
-    text-align: center; /* Center align text for all child elements */
+    align-items: center; /* center align all child elements horizontally */
+    text-align: center; /* center align text for all child elements */
     padding: 20px;
     margin: auto; /* Auto margins for centering if not using flex on body */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -280,25 +253,25 @@ h1, h2 {
 }
 
 .spot-image-container {
-    width: 100%; /* Full width to use the container's width */
-    height: auto; /* Maintain aspect ratio */
-    display: flex; /* Using flex to center image */
-    justify-content: center; /* Center horizontally */
+    width: 100%; 
+    height: auto; /* maintain aspect ratio */
+    display: flex; /* using flex to center image */
+    justify-content: center; /* center horizontally */
     align-items: center;
 }
 
 #study-spot-image {
     max-width: 50%;
-    max-height: 200px; /* Restrict image to not overflow its container */
-    height: auto; /* Keep aspect ratio intact */
-    display: block; /* Change display to block to handle sizing correctly */
-    margin: auto; /* Auto margins for horizontal centering */
+    max-height: 200px; /* restrict image to not overflow its container */
+    height: auto; 
+    display: block; 
+    margin: auto; 
 }
 
 #study-spot-directions {
-    max-width: 25%; /* Restrict image to not overflow its container */
-    height: auto; /* Keep aspect ratio intact */
-    display: block; /* Change display to block to handle sizing correctly */
+    max-width: 25%; /* restrict image to not overflow its container */
+    height: auto; 
+    display: block; 
     margin: auto;
 }
 
@@ -306,12 +279,12 @@ h1, h2 {
     width: 100%;
     padding-left: 10%;
     padding-right: 10%;
-    display: flex; /* Enables flexbox properties for this container */
-    justify-content: center; /* Centers content horizontally */
-    align-items: center; /* Centers content vertically */
-    text-align: center; /* Ensures text is centered if it wraps to a new line */
-    font-size: 1.5em; /* Larger text for visibility */
-    color: #00356B; /* Example color, adjust as needed */
+    display: flex; 
+    justify-content: center; /* centers content horizontally */
+    align-items: center; /* centers content vertically */
+    text-align: center; 
+    font-size: 1.5em; 
+    color: #00356B;
 }
 
 /* Start Over and Go Back button styles */
@@ -333,50 +306,47 @@ h1, h2 {
     color: white;
 }
 
-/* Adjusting the positions */
+/* adjusting positions */
 .start-over {
-    left: 20px; /* Bottom left corner */
+    left: 20px; 
 }
 
 .go-back {
-    right: 20px; /* Bottom right corner */
+    right: 20px;
 }
 
 .go-left {
-    left: 20%; /* Bottom left corner */
+    left: 20%; 
 }
 
 .go-right {
-    right: 20%; /* Bottom right corner */
+    right: 20%; 
 }
 
-/* "Show me More" button style */
 .more-info-button {
-    background-color: #00356B; /* Yale Blue background */
+    background-color: #00356B; 
     color: white;
     font-size: 4em;
     border-radius: 5px;
     margin: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    position: absolute; /* Position it absolutely to the container */
-    right: 10%; /* Distance from the right - adjust as necessary */
-    top: 50%; /* Align to the vertical center of the container */
-    transform: translate(-50%, -50%); /* Center the button */
-    display: block; /* Block display to fill the width and height */
-    width: 10vw; /* Width of the button */
-    height: 10vw; /* Height of the button */
-    line-height: 60px; /* Align the ">" character vertically */
-    text-align: center; /* Align the ">" character horizontally */
-    cursor: pointer; /* Cursor pointer to indicate button */
-    border: none; /* No border unless you want one */
-    padding: 0; /* Reset padding to 0 */
+    position: absolute; 
+    right: 10%; 
+    top: 50%; 
+    transform: translate(-50%, -50%); 
+    display: block; 
+    width: 10vw;
+    height: 10vw;
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+    border: none; 
+    padding: 0;
 }
 
 .more-info-button:hover {
-    background-color: #002244; /* A darker shade of Yale Blue */
+    background-color: #002244;
 }
-
-
 
 .help-container {
     max-width: 700px;
@@ -421,22 +391,20 @@ h1, h2 {
     color: #FFFFFF;
 }
 
-
-/* style.css */
 .go-back-help {
     position: absolute;
-    top: 3vh; /* 3% from the top of the viewport */
-    left: 3vh; /* 3% from the left of the viewport */
+    top: 3vh; 
+    left: 3vh; 
     background-color: #00356B;
     color: #FFFFFF;
     border: none;
-    padding: 2vh; /* Increased padding */
-    font-size: 4.5vh; /* Larger font size */
+    padding: 2vh; 
+    font-size: 4.5vh;
     width: 10vw;
     height: 10vw;
-    border-radius: 50%; /* Maintain the circular shape */
+    border-radius: 50%;
     cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Consistent transition effects */
+    transition: transform 0.3s ease, background-color 0.3s ease;
     z-index: 1000;
     left: 15%;
     align-items: center;
@@ -444,22 +412,21 @@ h1, h2 {
 }
 
 .go-back-help:hover {
-    transform: scale(1.1); /* Slightly larger on hover */
-    background-color: #002244; /* Darker on hover */
+    transform: scale(1.1);
+    background-color: #002244;
 }
 
-
 .start-over, .search, .go-back {
-    padding: 30px 50px; /* Increased padding to make buttons bigger */
-    font-size: 2em; /* Increased font size for larger text */
+    padding: 30px 50px; 
+    font-size: 2em;
     color: #00356B;
     border: 2px solid #00356B;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     position: fixed;
-    bottom: 3vh; /* 3% from the bottom for better vertical positioning */
+    bottom: 3vh;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    z-index: 1000; /* Ensures the button is above other elements */
+    z-index: 1000; 
 }
 
 .start-over:hover, .search:hover, .go-back:hover {
@@ -469,28 +436,28 @@ h1, h2 {
 }
 
 .start-over {
-    left: 15%; /* Moved towards the center */
+    left: 15%;
 }
 
 .search {
-    right: 15%; /* Moved towards the center */
+    right: 15%; 
 }
 
 .go-back {
-    right: 15%; /* Align with the search button on the opposite side */
+    right: 15%; 
 }
 
 @media (max-width: 768px) {
     .start-over, .search, .go-back {
         width: auto;
-        padding: 10px 15px; /* Adjusted padding for smaller screens */
-        font-size: 1.1em; /* Adjusted font size for smaller screens */
+        padding: 10px 15px; 
+        font-size: 1.1em; 
     }
 }
 
 #raising-hand-gif {
-    max-width: 20vw; /* Sets the maximum width to 20% of the viewport width */
-    height: auto; /* Keeps the aspect ratio of the GIF */
-    display: block; /* Ensures the image is a block element to respect the max-width */
-    margin: 1em auto; /* Centers the GIF horizontally and adds some space above and below */
+    max-width: 20vw; 
+    height: auto; 
+    display: block; 
+    margin: 1em auto;
 }
