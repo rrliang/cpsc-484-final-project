@@ -14,11 +14,13 @@ body, html {
 
 .container, .preferences-container {
     text-align: center;
-    padding: 20px;
-    max-width: 700px;
-    margin: auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    padding: 5vw; /* This will be based on the width of the viewport */
+    max-width: 80vw; /* This will max out at 80% of the width of the viewport */
+    width: 80vw; /* You can also set a specific width relative to the viewport width */
+    height: auto; /* Or set to a percentage of viewport height if you need a specific height */
+    margin: 5vh auto; /* This gives a margin on the top and bottom based on the viewport height */
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1); /* Adjust shadow size based on viewport width */
+    border-radius: 1vw; /* This makes the border-radius responsive to the viewport width */
     background: #FFF;
 }
 
@@ -541,4 +543,11 @@ input:checked + .slider:before {
         padding: 10px 15px; /* Adjusted padding for smaller screens */
         font-size: 1.1em; /* Adjusted font size for smaller screens */
     }
+}
+
+#raising-hand-gif {
+    max-width: 20vw; /* Sets the maximum width to 20% of the viewport width */
+    height: auto; /* Keeps the aspect ratio of the GIF */
+    display: block; /* Ensures the image is a block element to respect the max-width */
+    margin: 1em auto; /* Centers the GIF horizontally and adds some space above and below */
 }
