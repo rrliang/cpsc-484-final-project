@@ -17,7 +17,7 @@ Get directions to a study space (do not include how the directions will be provi
 In the final recommendation page, a QR code is available in which users can scan to their phones and get immediate directions to the spot. 
 
 # Constraints
-A constraint in the environment could be the fact that the Zoo (where our TV is located) inherently serves a particular demographic already - that is Computer Science majors. Our application is intended for everybody to use as any student can use this to find a study spot. However, because the TV is located in the Zoo, it is inherently skewed towards CS Majors using the app. 
+A constraint in the environment could be the fact that the Zoo (where our TV is located) inherently serves a particular demographic already - that is Computer Science majors. Our application is intended for everybody to use as any student can use this to find a study spot. However, because the TV is located in the Zoo, it is inherently skewed towards CS Majors using the app. Additionally, the app works best with just one person so the Zoo is a rather busy space and can cause the cursor to move slower. 
 
 # Collaboration Record
 Student Name and NetID: Rachel Liang rrl44
