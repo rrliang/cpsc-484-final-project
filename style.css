@@ -266,6 +266,17 @@ h1, h2 {
     font-size: 2em;
 }
 
+#study-spot-title {
+    color: #00356B;
+    font-size: 2em;
+    margin-bottom: 5px;
+}
+
+#study-spot-number {
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
 .recommendation-container {
     width: 100%; 
     max-width: 800px;
