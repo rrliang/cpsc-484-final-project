@@ -48,7 +48,7 @@ h1, h2 {
     font-weight: bold;
 }
 
-.action-button, .start-over, .search, .option, .start {
+.action-button, .start-over, .go-back, .search, .option, .start {
     padding: 30px 45px;
     cursor: pointer;
     font-size: 2em;
@@ -63,7 +63,8 @@ h1, h2 {
     position: relative;
 }
 
-.action-button:hover, .start-over:hover, .search:hover, .start:hover, .option:hover {
+.action-button:hover, .start-over:hover, .go-back:hover, .search:hover, .start:hover, .option:hover,
+.action-button.hovering, .start-over.hovering, .go-back.hovering, .search.hovering, .start.hovering {
     background-position: left bottom;
     color: #FFFFFF;
     transform: scale(1.05);
@@ -81,8 +82,8 @@ h1, h2 {
 
 .help-button {
     position: absolute;
-    top: 3vh; 
-    left: 3vh;
+    top: 10%;  
+    left: 20%;
     background-color: #00356B;
     color: #FFFFFF;
     border: none;
@@ -92,17 +93,25 @@ h1, h2 {
     height: 10vh; 
     border-radius: 50%; 
     cursor: pointer;
+    transform: translate(-50%, -50%) scale(1);
+    background-image: linear-gradient(to left, #00356B 50%, #002244 50%);
     transition: transform 0.3s ease, background-color 0.3s ease;
+    background-position: right bottom;
+    background-size: 200% 100%;
+    transform-origin: center;
     z-index: 1000; 
     display: flex;
     align-items: center;
     justify-content: center;
     left: 15%
-}
+} 
 
-.help-button:hover {
-    transform: scale(1.1); 
-    background-color: #002244; 
+.help-button:hover, .help-button.hovering {
+    background-position: left bottom; /* Shifted background position on hover */
+    color: #FFFFFF; /* Text color on hover */
+    transform: translate(-50%, -50%) scale(1.1); /* Scaled transformation on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced box-shadow on hover */
+    transition: background-position 2s linear, transform 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 
 .options-group {
@@ -120,7 +129,7 @@ h1, h2 {
     font-weight: bold;
 }
 
-.start-over, .search {
+.start-over, .search, .go-back {
     position: fixed;
     bottom: 20px;
 }
@@ -129,7 +138,7 @@ h1, h2 {
     left: 20px;
 }
 
-.search {
+.search, .go-back {
     right: 20px;
 }
 
@@ -137,7 +146,7 @@ h1, h2 {
     .options-group {
         flex-direction: column;
     }
-    .start-over, .search {
+    .start-over, .search, .go-back {
         width: auto; 
         padding: 10px; 
         font-size: smaller; 
@@ -301,7 +310,7 @@ h1, h2 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.start-over:hover, .go-back:hover {
+.start-over:hover {
     background-color: #00356B;
     color: white;
 }
@@ -309,10 +318,6 @@ h1, h2 {
 /* adjusting positions */
 .start-over {
     left: 20px; 
-}
-
-.go-back {
-    right: 20px;
 }
 
 .go-left {
@@ -324,28 +329,37 @@ h1, h2 {
 }
 
 .more-info-button {
-    background-color: #00356B; 
+    background-color: #00356B; /* Default background color */
     color: white;
     font-size: 4em;
     border-radius: 5px;
     margin: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    position: absolute; 
-    right: 10%; 
-    top: 50%; 
-    transform: translate(-50%, -50%); 
-    display: block; 
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1); /* Default transformation */
+    display: block;
     width: 10vw;
     height: 10vw;
     line-height: 60px;
     text-align: center;
     cursor: pointer;
-    border: none; 
+    border: none;
     padding: 0;
+    transform-origin: center; /* Center the scaling */
+    background-image: linear-gradient(to left, #00356B 50%, #002244 50%); /* Gradient background */
+    background-size: 200% 100%;
+    background-position: right bottom; /* Default background position */
+    transition: background-position 0s linear, transform 0.2s ease-out; /* Transitions for various properties */
 }
 
-.more-info-button:hover {
-    background-color: #002244;
+.more-info-button:hover, .more-info-button.hovering {
+    background-position: left bottom; /* Shifted background position on hover */
+    color: #FFFFFF; /* Text color on hover */
+    transform: translate(-50%, -50%) scale(1.1); /* Scaled transformation on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced box-shadow on hover */
+    transition: background-position 2s linear, transform 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 
 .help-container {
@@ -393,27 +407,34 @@ h1, h2 {
 
 .go-back-help {
     position: absolute;
-    top: 3vh; 
-    left: 3vh; 
+    top: 10%;  
+    left: 20%; 
     background-color: #00356B;
     color: #FFFFFF;
     border: none;
-    padding: 2vh; 
+    padding: 2vh;
     font-size: 4.5vh;
-    width: 10vw;
-    height: 10vw;
+    width: 12vw;
+    height: 12vw;
     border-radius: 50%;
     cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
     z-index: 1000;
-    left: 15%;
+    display: flex;
     align-items: center;
     justify-content: center;
+    transform: translate(-50%, -50%) scale(1); /* Keep this to center the button */
+    transform-origin: center; /* Center the scaling */
+    background-image: linear-gradient(to left, #00356B 50%, #002244 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: background-position 0s linear, transform 0.2s ease-out; /* Immediate background-position change when not hovering */
 }
 
-.go-back-help:hover {
-    transform: scale(1.1);
-    background-color: #002244;
+.go-back-help:hover, .go-back-help.hovering {
+    background-position: left bottom; /* Shifted background position on hover */
+    transform: translate(-50%, -50%) scale(1.1); /* Scaled transformation on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced box-shadow on hover */
+    transition: background-position 2s linear, transform 0.2s ease-out, box-shadow 0.2s ease-out; /* Slow background-position change on hover */
 }
 
 .start-over, .search, .go-back {
@@ -439,11 +460,7 @@ h1, h2 {
     left: 15%;
 }
 
-.search {
-    right: 15%; 
-}
-
-.go-back {
+.search, .go-back {
     right: 15%; 
 }
 

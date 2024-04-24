@@ -791,6 +791,7 @@ var frames = {
           if (pair.counter > 16) {
             // alert('2 sec');
             pair.counter = 0;
+            pair.element.classList.remove('hovering');
             pair.element.click();
           }
         });
