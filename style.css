@@ -246,6 +246,25 @@ h1, h2 {
     }
 }
 
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 50%;
+}
+
+#location-preference, #distance-preference, #noise-preference, #type-preference {
+    color: #00356B;
+    font-size: 1.5em;
+}
+
+.generating {
+    padding-top: 50px;
+    color: #00356B;
+    font-size: 2em;
+}
 
 .recommendation-container {
     width: 100%; 
